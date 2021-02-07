@@ -10,6 +10,8 @@
  */
 require_once 'core/Config.class.php';
 require_once 'core/App.class.php';
+use core\SessionUtils;
+
 
 use core\App;
 use core\Config;
@@ -31,5 +33,9 @@ $conf->app_url = $conf->server_url.$conf->app_root;
 if ($conf->clean_urls) $conf->action_root = $conf->app_root."/"; #for clean urls
 else $conf->action_root = $conf->app_root.'/index.php?'.$conf->action_param.'='; #for regular urls
 $conf->action_url = $conf->server_url.$conf->action_root;
+$conf->assets_url = $conf->app_url."/assets/";
 
 App::createAndInitialize($conf);
+
+// store globally used variable go have access to them from every script
+App::getSmarty()->assign("userData", SessionUtils::load("userData", true));
