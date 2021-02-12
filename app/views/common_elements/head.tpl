@@ -18,10 +18,10 @@
         <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
         <link rel="stylesheet" href="{$conf->assets_url}css/datepicker/datepicker.min.css" />
         <link rel="stylesheet" href="{$conf->assets_url}css/datepicker/picker.css" />
-        <link rel="stylesheet" href="{$conf->assets_url}css/bootstrap.min.css" />
         <link rel="stylesheet" href="{$conf->assets_url}css/skel-noscript.css" />
         <link rel="stylesheet" href="{$conf->assets_url}css/style.css" />
         <link rel="stylesheet" href="{$conf->assets_url}css/style-desktop.css" />
+        <link rel="stylesheet" href="{$conf->assets_url}css/bootstrap.min.css" />
 
 
         <meta charset="utf-8" />
