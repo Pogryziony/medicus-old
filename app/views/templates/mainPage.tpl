@@ -1,15 +1,15 @@
-{include file="page_elements/head.tpl"}
+{include file="common_elements/head.tpl"}
 <div id="wrapper">
 
     <!-- Main -->
     <div class="inner">
-        {include file="page_elements/pageHeader.tpl"}
+        {include file="common_elements/navigation/homepageNav.tpl"}
         {block name="content"}
 
-            {include file="page_elements/features.tpl"}
+            {include file="common_elements/features.tpl"}
 
         {/block}
-        {include file="messages/messages.tpl"}
+        {include file="common_elements/messages/messages.tpl"}
     </div>
 </div>
-{include file="page_elements/footer.tpl"}
+{include file="common_elements/footer.tpl"}
