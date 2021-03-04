@@ -30,12 +30,6 @@
     </div>
     </footer>
 </div>
-<!-- Copyright -->
-<div id="copyright">
-    <div class="container">
-        Template: <a href="http://templated.co">templated.co</a>
-    </div>
-</div>
     <script src="{$conf->assets_url}js/jquery.min.js"></script>
     <script src="{$conf->assets_url}js/browser.min.js"></script>
     <script src="{$conf->assets_url}js/breakpoints.min.js"></script>

@@ -1,7 +1,8 @@
 {if !$msgs->isEmpty()}
-    <ul>
+    <ul class="list-group alert-danger">
         {foreach $msgs->getMessages() as $msg}
-            <li>{$msg->text}</li>
+            <li class="list-group-item">{$msg->text}</li>
         {/foreach}
     </ul>
 {/if}
+</div>
