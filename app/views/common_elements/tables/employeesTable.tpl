@@ -29,9 +29,9 @@
                             <td>{$emp["id"]}</td>
                             <td>{$emp["pesel"]}</td>
                             <td>{$emp["name"]}</td>
-                            <td>{$emp["second_name"]}</td>
+                            <td>{($emp["second_name"]) ? $emp["second_name"] : "---"}</td>
                             <td>{$emp["surname"]}</td>
-                            <td>{$emp["profession"]}</td>
+                            <td>{($emp["profession"]) ? $emp["profession"] : "---"}</td>
                             <td>{$emp["phone"]}</td>
                             <td>{$emp["email"]}</td>
                             <td>
@@ -44,8 +44,8 @@
                                         Rozwiń
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="actionDrop">
-                                        <li><a class="glyphicon glyphicon-pencil" aria-hidden="true" data-target="#" href="#" >Edytuj</a></li>
-                                        <li><a class="glyphicon glyphicon-trash" aria-hidden="true" href="#">Usuń</a></li>
+                                        <li><a class="glyphicon glyphicon-pencil" aria-hidden="true" onclick="location.href='{$conf->action_url}editEmployee/{$emp['id']}';" >Edytuj</a></li>
+                                        <li><a class="glyphicon glyphicon-trash" aria-hidden="true" onclick="location.href='{$conf->action_url}employeeDelete/{$emp['id']}';">Usuń</a></li>
                                     </ul>
                                 </div>
                             </td>
@@ -56,7 +56,7 @@
             </div>
 
             <div class="panel-footer">
-                <button type="button" class="button btn-lg" onclick="location.href='{$conf->action_root}displayEmployeeRegistrationForm';">Dodaj pracownika</button>
+                <button type="button" class="button btn-lg" onclick="location.href='{$conf->action_root}generateEmployeeRegisterForm';">Dodaj pracownika</button>
             </div>
         </div>
 

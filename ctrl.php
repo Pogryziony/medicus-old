@@ -1,8 +1,12 @@
 <?php
+
+use core\App;
+use core\SessionUtils;
+
 require_once 'init.php';
 
 require_once 'routing.php';
 
-\core\SessionUtils::loadMessages();
+SessionUtils::loadMessages();
 
-\core\App::getRouter()->go();
+App::getRouter()->go();

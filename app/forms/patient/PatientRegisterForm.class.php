@@ -1,8 +1,7 @@
 <?php
-namespace app\forms;
+namespace app\forms\patient;
 
-class RegisterForm{
-    public $id;
+class PatientRegisterForm{
     public $pesel;
     public $name;
     public $second_name;
@@ -15,5 +14,4 @@ class RegisterForm{
     public $phone;
     public $email;
     public $password;
-    public $active;
 }

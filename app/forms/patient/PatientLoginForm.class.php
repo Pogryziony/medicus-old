@@ -1,5 +1,5 @@
 <?php
-namespace app\forms;
+namespace app\forms\patient;
 
 class PatientLoginForm{
     public $pesel;

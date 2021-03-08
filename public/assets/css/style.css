@@ -101,11 +101,6 @@
 		margin-bottom: 1em;
 	}
 
-	header
-	{
-		margin-bottom: 1.6em;
-	}
-	
 		header h2
 		{
 		}
@@ -771,8 +766,7 @@
 	#header
 	{
 		position: relative;
-		background: url(../images/header.jpg) no-repeat bottom center;
-		background-attachment: fixed;
+		background: url(../images/header.jpg) no-repeat bottom center fixed;
 		background-size: cover;
 		text-align: center;
 	}
@@ -914,6 +908,7 @@
 	{
 		position: relative;
 		text-align: center;
+		background-color: #f2f2f2;
 	}
 	
 	#footer header h2

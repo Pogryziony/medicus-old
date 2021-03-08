@@ -34,13 +34,13 @@
                             <td>{$pat["id"]}</td>
                             <td>{$pat["pesel"]}</td>
                             <td>{$pat["name"]}</td>
-                            <td>{$pat["second_name"]}</td>
+                            <td>{($pat["second_name"]) ? $pat["second_name"] : "---"}</td>
                             <td>{$pat["surname"]}</td>
                             <td>{$pat["voivodeship"]}</td>
                             <td>{$pat["city"]}</td>
                             <td>{$pat["street"]}</td>
                             <td>{$pat["house_number"]}</td>
-                            <td>{$pat["flat_number"]}</td>
+                            <td>{($pat["flat_number"]) ? $pat["flat_number"] : "---"}</td>
                             <td>{$pat["phone"]}</td>
                             <td>{$pat["email"]}</td>
                             <td>

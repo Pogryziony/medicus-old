@@ -51,7 +51,7 @@
             </div>
 
             <div class="panel-footer">
-                <button type="button" class="button btn-lg" onclick="location.href='{$conf->action_root}addEmployee';">Dodaj wizytę</button>
+                <button type="button" class="btn btn-default btn-lg btn-block" onclick="location.href='{$conf->action_root}showAddAppointmentForm';">Dodaj wizytę</button>
             </div>
         </div>
 
