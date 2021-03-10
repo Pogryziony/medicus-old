@@ -65,7 +65,7 @@
             </div>
 
             <div class="panel-footer">
-                <button type="button" class="button btn-lg" onclick="location.href='{$conf->action_root}addPatient';">Dodaj pacjenta</button>
+                <button type="button" class="button btn-lg" onclick="location.href='{$conf->action_root}generateAdminPatientRegistrationView';">Dodaj pacjenta</button>
             </div>
         </div>
 

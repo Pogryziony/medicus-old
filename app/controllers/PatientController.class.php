@@ -127,26 +127,6 @@ class PatientController {
     }
 
     ##########
-    # WIZYTY #
-    ##########
-    private function generateAppointmentTable(){
-        try {
-            $this->appointments = App::getDB()->select('appointment', '*');
-        } catch (\PDOException $e) {
-            Utils::addErrorMessage('Wystąpił błąd podczas odczytu rekordu');
-            if (App::getConf()->debug)
-                Utils::addErrorMessage($e->getMessage());
-        }
-        App::getSmarty()->assign('appointment', $this->appointments);
-        App::getSmarty()->display("common_elements/tables/appointmentTable.tpl");
-    }
-
-    public function action_displayAppointmentTable()
-    {
-        $this->generateAppointmentTable();
-    }
-
-    ##########
     # WIDOKI #
     ##########
     public function action_showPatientLoginForm()

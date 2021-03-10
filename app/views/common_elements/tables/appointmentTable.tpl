@@ -17,6 +17,7 @@
                         <th>Pesel pacjenta</th>
                         <th>Pesel lekarza</th>
                         <th>Data wizyty</th>
+                        <th>Godzina wizyty</th>
                         <th>Cel</th>
                         <th>Akcja</th>
                     </tr>
@@ -28,6 +29,7 @@
                             <td>{$apt["pesel_employee"]}</td>
                             <td>{$apt["pesel_patient"]}</td>
                             <td>{$apt["date"]}</td>
+                            <td>{$apt["time"]}</td>
                             <td>{$apt["purpose"]}</td>
                             <td>
                                 <div class="dropdown">
@@ -39,8 +41,8 @@
                                         Rozwiń
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="actionDrop">
-                                        <li><a class="glyphicon glyphicon-pencil" aria-hidden="true" data-target="#" href="#" >Edytuj</a></li>
-                                        <li><a class="glyphicon glyphicon-trash" aria-hidden="true" href="#">Usuń</a></li>
+                                        <li><a class="glyphicon glyphicon-pencil" aria-hidden="true" onclick="location.href='{$conf->action_url}editAppointment/{$apt['id']}';" >Edytuj</a></li>
+                                        <li><a class="glyphicon glyphicon-trash" aria-hidden="true"onclick="location.href='{$conf->action_url}deleteAppointment/{$apt['id']}';">Usuń</a></li>
                                     </ul>
                                 </div>
                             </td>
@@ -51,7 +53,7 @@
             </div>
 
             <div class="panel-footer">
-                <button type="button" class="btn btn-default btn-lg btn-block" onclick="location.href='{$conf->action_root}showAddAppointmentForm';">Dodaj wizytę</button>
+                <button type="button" class="button btn-lg" onclick="location.href='{$conf->action_root}generateAddAppointmentForm';">Dodaj wizytę</button>
             </div>
         </div>
 

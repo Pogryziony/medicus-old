@@ -4,7 +4,7 @@
     <div id="featured">
         <div class="container" xmlns="http://www.w3.org/1999/html">
             <h2>Formularz rejestracji wizyty</h2>
-            <form method="POST" action="{$conf->action_url}registerNewAppointment">
+            <form method="POST" action="{$conf->action_url}editAppointment">
                 <div class="row-cols-xl-auto " align="center">
                     <div class="col-xl-3 ">
                         <label for="pesel">Pesel pacjenta</label>
@@ -18,11 +18,11 @@
                     </div>
                     <div class="col-xl-3">
                         <label for="date">Data</label>
-                        <input class="datepicker active" type="text" name="date" id="date" placeholder="Data" value="{$form->date|substr:0:10}" required>
+                        <input class="datepicker active" type="text" name="date" id="date" placeholder="Data" value="{$form->date}" required>
                     </div>
                     <div class="col-xl-3">
                         <label for="time">Godzina</label>
-                        <input class="hour_picker" type="text" name="time" id="time" placeholder="Godzina" value="{$form->time|substr:11:5}" required>
+                        <input class="hour_picker" type="text" name="time" id="time" placeholder="Godzina" value="{$form->time}" required>
                     </div>
                     <div class="col-xl-3">
                         <label for="purpose">Cel wizyty</label>

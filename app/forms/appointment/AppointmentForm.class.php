@@ -1,10 +1,10 @@
 <?php
 namespace app\forms\appointment;
 
-use core\App;
-
 class AppointmentForm{
-    public $pesel;
+    public $patientPesel;
+    public $employeePesel;
     public $date;
+    public $time;
     public $purpose;
 }

@@ -23,7 +23,7 @@
                 </div>
                 <div class="col-xl-3">
                     <button type="submit" class="btn btn-default btn-lg btn-block">Zaloguj</button>
-                    <button type="button" class="btn btn-default btn-lg btn-block" onclick="location.href='{$conf->action_root}registerShowForm';">Zarejestruj</button>
+                    <button type="button" class="btn btn-default btn-lg btn-block" onclick="location.href='{$conf->action_root}generatePatientSelfRegistrationView';">Zarejestruj</button>
                 </div>
             </div>
             </form>
