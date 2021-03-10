@@ -4,8 +4,9 @@
     <div id="featured">
         <div class="container" xmlns="http://www.w3.org/1999/html">
             <h2>Formularz edycji pracownika</h2>
-            <form method="post" action="{$conf->action_url}employeeSave">
+            <form method="post" action="{$conf->action_url}saveEmployee">
                 <div class="row-cols-xl-auto" align="center">
+                    <input type="id" class="form-control visually-hidden" name="id" placeholder="id" value="{if $action === "editEmployee"}{$form->id}{/if}" required>
                     <div class="col-xl-3 ">
                         <label for="pesel">Pesel</label>
                         <input type="pesel" class="form-control" name="pesel" placeholder="Pesel" value="{if $action === "editEmployee"}{$form->pesel}{/if}" required>
@@ -55,26 +56,28 @@
                     </div>
 
                     <div class="col-xl-3">
-                        <div class="panel panel-info" width="50%">
+                        <div class="panel panel-info">
                             <div class="panel-heading">
                                 <label for="flexRadioDefault">Wybierz rolę:</label>
                             </div>
                             <div class="panel-body">
-                                <select name="role">
-                                    <option value="user" {if $action === "editEmployee" and {$form->role === "user"}}selected{/if}>Użytkownik</option>
-                                    <option value="admin" {if $action === "editEmployee" and {$form->role === "admin"}}selected{/if}>Administrator</option>
-                                </select>
+                                <label>
+                                    <select name="role">
+                                        <option value="user" {if $action === "editEmployee" and {$form->role === "user"}}selected{/if}>Użytkownik</option>
+                                        <option value="admin" {if $action === "editEmployee" and {$form->role === "admin"}}selected{/if}>Administrator</option>
+                                    </select>
+                                </label>
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-3">
-                        <div class="panel panel-info" width="50%">
+                        <div class="panel panel-info">
                             <div class="panel-heading">
                                 <label for="flexRadioDefault">Czy użytkownik jest aktywny:</label>
                             </div>
                             <div class="panel-body">
                                 <div class="form-check">
-                                    <input type="checkbox" id="active" name="active" value="true" {if $action === "editEmployee" and {$form->active === true}}checked{/if}>
+                                    <input type="checkbox" id="active" name="active" value="true" {if {$form->isActive}}checked{/if}>
                                     <label for="active">Aktywny</label>
                                 </div>
                             </div>

@@ -45,7 +45,7 @@
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="actionDrop">
                                         <li><a class="glyphicon glyphicon-pencil" aria-hidden="true" onclick="location.href='{$conf->action_url}editEmployee/{$emp['id']}';" >Edytuj</a></li>
-                                        <li><a class="glyphicon glyphicon-trash" aria-hidden="true" onclick="location.href='{$conf->action_url}employeeDelete/{$emp['id']}';">Usuń</a></li>
+                                        <li><a class="glyphicon glyphicon-trash" aria-hidden="true" onclick="location.href='{$conf->action_url}deleteEmployee/{$emp['id']}';">Usuń</a></li>
                                     </ul>
                                 </div>
                             </td>

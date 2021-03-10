@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2021-03-08 03:42:45
+/* Smarty version 3.1.34-dev-7, created on 2021-03-10 22:37:30
   from 'C:\xampp\htdocs\medicus\app\views\common_elements\tables\employeesTable.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_60458f257494f4_72245469',
+  'unifunc' => 'content_60493c1a1d10d7_66745171',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '550834581cbd32f238189c92639fb6fd9a3039a0' => 
     array (
       0 => 'C:\\xampp\\htdocs\\medicus\\app\\views\\common_elements\\tables\\employeesTable.tpl',
-      1 => 1615170974,
+      1 => 1615412246,
       2 => 'file',
     ),
   ),
@@ -21,24 +21,24 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:common_elements/navigation/employeeModuleNav.tpl' => 1,
   ),
 ),false)) {
-function content_60458f257494f4_72245469 (Smarty_Internal_Template $_smarty_tpl) {
+function content_60493c1a1d10d7_66745171 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_189534441060458f25738bb6_93603725', "content");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_126279810460493c1a1bafd0_58244633', "content");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "common.tpl");
 }
 /* {block "content"} */
-class Block_189534441060458f25738bb6_93603725 extends Smarty_Internal_Block
+class Block_126279810460493c1a1bafd0_58244633 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_189534441060458f25738bb6_93603725',
+    0 => 'Block_126279810460493c1a1bafd0_58244633',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -106,7 +106,7 @@ $_smarty_tpl->tpl_vars['emp']->do_else = false;
 editEmployee/<?php echo $_smarty_tpl->tpl_vars['emp']->value['id'];?>
 ';" >Edytuj</a></li>
                                         <li><a class="glyphicon glyphicon-trash" aria-hidden="true" onclick="location.href='<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
-employeeDelete/<?php echo $_smarty_tpl->tpl_vars['emp']->value['id'];?>
+deleteEmployee/<?php echo $_smarty_tpl->tpl_vars['emp']->value['id'];?>
 ';">Usuń</a></li>
                                     </ul>
                                 </div>

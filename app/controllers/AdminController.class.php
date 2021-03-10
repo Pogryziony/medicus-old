@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-use app\forms\employee\EmployeeRegisterForm;
+use app\forms\employee\EmployeeForm;
 use app\forms\patient\PatientRegisterForm;
 use core\App;
 use core\ParamUtils;
@@ -15,13 +15,12 @@ class AdminController
 {
     private $patientRegisterForm;
 
-    private $employeeRegisterForm;
+    private $employeeForm;
 
     public function __construct()
     {
-        $this->employeeRegisterForm = new EmployeeRegisterForm();
         $this->patientRegisterForm = new PatientRegisterForm();
-
+        $this->employeeForm = new EmployeeForm();
     }
 
     public function action_registerEmployee()
@@ -34,27 +33,27 @@ class AdminController
         if ($this->validateEmployeeRegistration()) {
             try {
                 $emailExists = App::getDB()->get("employee", '*', [
-                    "email" => $this->employeeRegisterForm->email
+                    "email" => $this->employeeForm->email
                 ]);
                 if (!$emailExists) {
                     App::getDB()->insert("employee", [
-                        "pesel" => $this->employeeRegisterForm->pesel,
-                        "name" => $this->employeeRegisterForm->name,
-                        "second_name" => $this->employeeRegisterForm->secondName,
-                        "surname" => $this->employeeRegisterForm->surname,
-                        "profession" => $this->employeeRegisterForm->profession,
-                        "phone" => $this->employeeRegisterForm->phone,
-                        "email" => $this->employeeRegisterForm->email,
-                        "password" => $this->employeeRegisterForm->password,
-                        "role" => $this->employeeRegisterForm->role,
-                        "active" => $this->employeeRegisterForm->isActive,
+                        "pesel" => $this->employeeForm->pesel,
+                        "name" => $this->employeeForm->name,
+                        "second_name" => $this->employeeForm->secondName,
+                        "surname" => $this->employeeForm->surname,
+                        "profession" => $this->employeeForm->profession,
+                        "phone" => $this->employeeForm->phone,
+                        "email" => $this->employeeForm->email,
+                        "password" => $this->employeeForm->password,
+                        "role" => $this->employeeForm->role,
+                        "active" => $this->employeeForm->isActive,
                     ]);
                     $employeeRow = App::getDB()->get("employee", [
-                        "pesel" => $this->employeeRegisterForm->pesel
+                        "pesel" => $this->employeeForm->pesel
                     ]);
-                    $this->employeeRegisterForm->id = $employeeRow['id'];
+                    $this->employeeForm->id = $employeeRow['id'];
                     App::getDB()->insert("employee", [
-                        "id" => $this->employeeRegisterForm->id
+                        "id" => $this->employeeForm->id
                     ]);
                 } else {
                     Utils::addErrorMessage('Email lub nazwa użytkownika już istnieje..');
@@ -74,30 +73,30 @@ class AdminController
 
     private function validateEmployeeRegistration()
     {
-        $this->employeeRegisterForm->pesel = ParamUtils::getFromRequest('pesel', true, 'Błędne wywołanie aplikacji');
-        $this->employeeRegisterForm->name = ParamUtils::getFromRequest('name', true, 'Błędne wywołanie aplikacji');
-        $this->employeeRegisterForm->secondName = ParamUtils::getFromRequest('second_name',  false, 'Błędne wywołanie aplikacji');
-        $this->employeeRegisterForm->surname = ParamUtils::getFromRequest('surname', true, 'Błędne wywołanie aplikacji');
-        $this->employeeRegisterForm->profession = ParamUtils::getFromRequest('profession', true, 'Błędne wywołanie aplikacji');
-        $this->employeeRegisterForm->phone = ParamUtils::getFromRequest('phone', true, 'Błędne wywołanie aplikacji');
-        $this->employeeRegisterForm->email = ParamUtils::getFromRequest('email', true, 'Błędne wywołanie aplikacji');
-        $this->employeeRegisterForm->password = ParamUtils::getFromRequest('password', true, 'Błędne wywołanie aplikacji');
-        $this->employeeRegisterForm->role = (ParamUtils::getFromPost("role") === "admin") ? "admin" : "user";
-        $this->employeeRegisterForm->isActive = ParamUtils::getFromRequest('active', true, 'Błędne wywołanie aplikacji') == "true";
+        $this->employeeForm->pesel = ParamUtils::getFromRequest('pesel', true, 'Błędne wywołanie aplikacji');
+        $this->employeeForm->name = ParamUtils::getFromRequest('name', true, 'Błędne wywołanie aplikacji');
+        $this->employeeForm->secondName = ParamUtils::getFromRequest('second_name',  false, 'Błędne wywołanie aplikacji');
+        $this->employeeForm->surname = ParamUtils::getFromRequest('surname', true, 'Błędne wywołanie aplikacji');
+        $this->employeeForm->profession = ParamUtils::getFromRequest('profession', true, 'Błędne wywołanie aplikacji');
+        $this->employeeForm->phone = ParamUtils::getFromRequest('phone', true, 'Błędne wywołanie aplikacji');
+        $this->employeeForm->email = ParamUtils::getFromRequest('email', true, 'Błędne wywołanie aplikacji');
+        $this->employeeForm->password = ParamUtils::getFromRequest('password', true, 'Błędne wywołanie aplikacji');
+        $this->employeeForm->role = (ParamUtils::getFromPost("role") === "admin") ? "admin" : "user";
+        $this->employeeForm->isActive = ParamUtils::getFromRequest('active', true, 'Błędne wywołanie aplikacji') == "true";
 
         if (App::getMessages()->isError())
             return false;
 
         $v = new Validator();
 
-        $this->employeeRegisterForm->pesel = $v->validate($this->employeeRegisterForm->pesel, [
+        $this->employeeForm->pesel = $v->validate($this->employeeForm->pesel, [
             'trim' => true,
             'required' => true,
             'length' => 11,
             'validator_message' => 'Pesel musi mieć 11 znaków.',
         ]);
 
-        $this->employeeRegisterForm->name = $v->validate($this->employeeRegisterForm->name, [
+        $this->employeeForm->name = $v->validate($this->employeeForm->name, [
             'trim' => true,
             'required' => true,
             'min_length' => 2,
@@ -105,7 +104,7 @@ class AdminController
             'validator_message' => 'Imie powinno mieścić się pomiędzy 2 a 30 znakami.',
         ]);
 
-        $this->employeeRegisterForm->surname = $v->validate($this->employeeRegisterForm->surname, [
+        $this->employeeForm->surname = $v->validate($this->employeeForm->surname, [
             'trim' => true,
             'required' => true,
             'min_length' => 5,
@@ -113,14 +112,14 @@ class AdminController
             'validator_message' => 'Nazwisko powinno mieścić się pomiędzy 5 a 30 znakami.',
         ]);
 
-        $this->employeeRegisterForm->phone = $v->validate($this->employeeRegisterForm->phone, [
+        $this->employeeForm->phone = $v->validate($this->employeeForm->phone, [
             'trim' => true,
             'required' => true,
             'regexp' => "/^[0-9]{9}$/",
             'validator_message' => 'Podaj prawidłowy numer telefonu - 9 cyfr.',
         ]);
 
-        $this->employeeRegisterForm->email = $v->validate($this->employeeRegisterForm->email, [
+        $this->employeeForm->email = $v->validate($this->employeeForm->email, [
             'trim' => true,
             'required' => true,
             'min_length' => 5,
@@ -128,7 +127,7 @@ class AdminController
             'validator_message' => 'Email powinien mieścić się pomiędzy 5 a 30 znakami.',
         ]);
 
-        $this->employeeRegisterForm->password = $v->validate($this->employeeRegisterForm->password, [
+        $this->employeeForm->password = $v->validate($this->employeeForm->password, [
             'trim' => true,
             'required' => true,
             'validator_message' => 'Podano nieprawidłowe hasło',
@@ -140,100 +139,187 @@ class AdminController
         return !App::getMessages()->isError();
     }
 
-    #########################################################################################
-
     public function action_editEmployee()
     {
-        $this->editEmployee();
+        if ($this->validateEmployeeEdit()) {
+            $this->generateEmployeeEditForm();
+        } else {
+            App::getRouter()->forwardTo('displayEmployeeTable');
+        }
     }
 
     private function editEmployee()
     {
-        if ($this->validateEdit()) {
+        if ($this->validateEmployeeEdit()) {
             try {
-                $record = App::getDB()->get("employee", "*", [
-                    "id" => $this->employeeRegisterForm->id
+                $emailExists = App::getDB()->get("employee", '*', [
+                    "email" => $this->employeeForm->email
                 ]);
-                $this->employeeRegisterForm->pesel = $record['pesel'];
-                $this->employeeRegisterForm->name = $record['name'];
-                $this->employeeRegisterForm->secondName = $record['second_name'];
-                $this->employeeRegisterForm->surname = $record['surname'];
-                $this->employeeRegisterForm->profession = $record['profession'];
-                $this->employeeRegisterForm->phone = $record['phone'];
-                $this->employeeRegisterForm->email = $record['email'];
-                $this->employeeRegisterForm->password = $record['password'];
-                $this->employeeRegisterForm->role = $record['role'];
-                $this->employeeRegisterForm->isActive = $record['active'];
-
+                if (!$emailExists) {
+                    App::getDB()->insert("employee", [
+                        "pesel" => $this->employeeForm->pesel,
+                        "name" => $this->employeeForm->name,
+                        "second_name" => $this->employeeForm->secondName,
+                        "surname" => $this->employeeForm->surname,
+                        "profession" => $this->employeeForm->profession,
+                        "phone" => $this->employeeForm->phone,
+                        "email" => $this->employeeForm->email,
+                        "password" => $this->employeeForm->password,
+                        "role" => $this->employeeForm->role,
+                        "active" => $this->employeeForm->isActive,
+                    ]);
+                    $employeeRow = App::getDB()->get("employee", [
+                        "pesel" => $this->employeeForm->pesel
+                    ]);
+                    $this->employeeForm->id = $employeeRow['id'];
+                    App::getDB()->insert("employee", [
+                        "id" => $this->employeeForm->id
+                    ]);
+                } else {
+                    Utils::addErrorMessage('Email lub nazwa użytkownika już istnieje..');
+                    $this->generateEmployeeRegistrationView();
+                }
             } catch (\PDOException $e) {
-                Utils::addErrorMessage('Wystąpił błąd podczas odczytu rekordu');
+                Utils::addErrorMessage('Wystąpił nieoczekiwany błąd podczas zapisu rekordu');
                 if (App::getConf()->debug)
                     Utils::addErrorMessage($e->getMessage());
             }
+            Utils::addInfoMessage('Rejestracja zakończona pomyślnie');
+            App::getRouter()->forwardTo('displayEmployeeTable');
+        } else {
+            $this->generateEmployeeRegistrationView();
         }
-        $this->generateEmployeeEditForm();
     }
 
-    public function validateEdit() {
-        $this->employeeRegisterForm->id = ParamUtils::getFromCleanURL(1, true, 'Błędne wywołanie aplikacji');
-        try {
-            $employeeData = App::getDB()->get("employee", "*", [
-                "id" => $this->employeeRegisterForm->id
-            ]);
-            if(!isset($employeeData)){
-                Utils::addErrorMessage('Błąd, użytkownik nie istnieje!');
-                return false;
+    public function validateEmployeeEdit() {
+            $this->employeeForm->id = ParamUtils::getFromCleanURL(1, true, 'Błędne wywołanie aplikacji');
+            try {
+                $record = App::getDB()->get("employee", "*", [
+                    "id" => $this->employeeForm->id
+                ]);
+                $this->employeeForm->pesel = $record['pesel'];
+                $this->employeeForm->name = $record['name'];
+                $this->employeeForm->secondName = $record['second_name'];
+                $this->employeeForm->surname = $record['surname'];
+                $this->employeeForm->profession = $record['profession'];
+                $this->employeeForm->phone = $record['phone'];
+                $this->employeeForm->email = $record['email'];
+                $this->employeeForm->password = $record['password'];
+                $this->employeeForm->role = $record['role'];
+                $this->employeeForm->isActive = $record['active'];
+            } catch (\PDOException $e) {
+                Utils::addErrorMessage('Wystąpił błąd aplikacji.');
+                if (App::getConf()->debug)
+                    Utils::addErrorMessage($e->getMessage());
             }
-        } catch (\PDOException $e) {
-            if (App::getConf()->debug)
-                Utils::addErrorMessage($e->getMessage());
-        }
         return !App::getMessages()->isError();
     }
 
-    public function action_employeeSave() {
-        if($this->validateEmployeeRegistration()) {
-            try {
-                   App::getDB()->update("employee", [
-                        "pesel" => $this->employeeRegisterForm->pesel,
-                        "name" => $this->employeeRegisterForm->name,
-                        "second_name" => $this->employeeRegisterForm->secondName,
-                        "surname" => $this->employeeRegisterForm->surname,
-                        "profession" => $this->employeeRegisterForm->profession,
-                        "phone" => $this->employeeRegisterForm->phone,
-                        "email" => $this->employeeRegisterForm->email,
-                        "password" => $this->employeeRegisterForm->password,
-                        "role" => $this->employeeRegisterForm->role,
-                        "active" => $this->employeeRegisterForm->isActive,
-                    ], [
-                        "id" => $this->employeeRegisterForm->id
-                    ]);
+    public function validateEmployeeSave() {
+        $this->employeeForm->id = ParamUtils::getFromRequest('id', true, 'Błędne ID');
+        $this->employeeForm->pesel = ParamUtils::getFromRequest('pesel', true, 'Błędny pesel');
+        $this->employeeForm->name = ParamUtils::getFromRequest('name', true, 'Błędne imie');
+        $this->employeeForm->secondName = ParamUtils::getFromRequest('second_name', false, 'Błędne drugie imie');
+        $this->employeeForm->surname = ParamUtils::getFromRequest('surname', true, 'Błędne nazwisko');
+        $this->employeeForm->profession = ParamUtils::getFromRequest('profession', false, 'Błędny zawód');
+        $this->employeeForm->phone = ParamUtils::getFromRequest('phone', true, 'Błędny nr telefonu');
+        $this->employeeForm->email = ParamUtils::getFromRequest('email', true, 'Błędny email');
+        $this->employeeForm->password = ParamUtils::getFromRequest('password', true, 'Błędne hasło');
+        $this->employeeForm->role = ParamUtils::getFromRequest('role', true, 'Błędna rola');
+        $this->employeeForm->isActive = ParamUtils::getFromRequest('active', true, 'Błędna aktywność') == "true";
 
+        if (App::getMessages()->isError())
+            return false;
+
+        $v = new Validator();
+
+        $this->employeeForm->id = $v->validate($this->employeeForm->id, [
+            'trim' => true,
+            'required' => true,
+            'int' => true,
+            'required_message' => 'Wystąpił błąd aplikacji',
+            'validator_message' => 'Wystąpił błąd aplikacji.',
+        ]);
+
+        $this->employeeForm->name = $v->validate($this->employeeForm->name, [
+            'trim' => true,
+            'required' => true,
+            'min_length' => 2,
+            'max_length' => 30,
+            'validator_message' => 'Imie powinno mieścić się pomiędzy 2 a 30 znakami.',
+        ]);
+
+        $this->employeeForm->surname = $v->validate($this->employeeForm->surname, [
+            'trim' => true,
+            'required' => true,
+            'min_length' => 5,
+            'max_length' => 30,
+            'validator_message' => 'Nazwisko powinno mieścić się pomiędzy 5 a 30 znakami.',
+        ]);
+
+        $this->employeeForm->phone = $v->validate($this->employeeForm->phone, [
+            'trim' => true,
+            'required' => true,
+            'regexp' => "/^[0-9]{9}$/",
+            'validator_message' => 'Podaj prawidłowy numer telefonu - 9 cyfr.',
+        ]);
+
+        $this->employeeForm->email = $v->validate($this->employeeForm->email, [
+            'trim' => true,
+            'required' => true,
+            'min_length' => 5,
+            'max_length' => 30,
+            'validator_message' => 'Email powinien mieścić się pomiędzy 5 a 30 znakami.',
+        ]);
+
+        $this->employeeForm->password = $v->validate($this->employeeForm->password, [
+            'trim' => true,
+            'required' => true,
+            'validator_message' => 'Podano nieprawidłowe hasło',
+        ]);
+
+        if (App::getMessages()->isError())
+            return false;
+
+        return !App::getMessages()->isError();
+    }
+
+    public function action_saveEmployee() {
+        if($this->validateEmployeeSave()) {
+            try{
+                App::getDB()->update("employee", [
+                    "pesel" => $this->employeeForm->pesel,
+                    "name" => $this->employeeForm->name,
+                    "second_name" => $this->employeeForm->secondName,
+                    "surname" => $this->employeeForm->surname,
+                    "profession" => $this->employeeForm->profession,
+                    "phone" => $this->employeeForm->phone,
+                    "email" => $this->employeeForm->email,
+                    "password" => $this->employeeForm->password,
+                    "role" => $this->employeeForm->role,
+                    "active" => $this->employeeForm->isActive,
+                ], [
+                    "id" => $this->employeeForm->id
+                ]);
             } catch(\PDOException $e) {
                 Utils::addErrorMessage('Wystąpił nieoczekiwany błąd podczas zapisu rekordu');
                 if (App::getConf()->debug)
                     Utils::addErrorMessage($e->getMessage());
             }
-            Utils::addInfoMessage('Zapisano zmiany pracownika o peselu'.$this->employeeRegisterForm->pesel);
+            Utils::addInfoMessage('Zapisano zmiany w rachunku.');
             App::getRouter()->forwardTo('displayEmployeeTable');
         }else {
             $this->generateEmployeeEditForm();
         }
     }
 
-    public function action_employeeDelete()
-    {
-        $this->employeeDelete();
-    }
-
-    private function validateDelete() {
-        if(RoleUtils::inRole('admin')) {
-            $this->employeeRegisterForm->id = ParamUtils::getFromCleanURL(1, true, 'Błędne wywołanie aplikacji');
+    public function validateEmployeeDelete() {
+            $this->employeeForm->id = ParamUtils::getFromCleanURL(1, true, 'Błędne wywołanie aplikacji');
             try{
-                $employee= App::getDB()->get("employee", "*", [
-                    "id" => $this->employeeRegisterForm->id
+                $record = App::getDB()->get("employee", "*", [
+                    "id" => $this->employeeForm->id
                 ]);
-                if(!$employee){
+                if(!$record){
                     Utils::addErrorMessage('Pracownik nie istnieje.');
                     return false;
                 }
@@ -242,22 +328,17 @@ class AdminController
                 if (App::getConf()->debug)
                     Utils::addErrorMessage($e->getMessage());
             }
-        }else{
-            Utils::addErrorMessage('Nie masz uprawnień');
-            App::getRouter()->forwardTo('displayEmployeeTable');
-        }
 
         return !App::getMessages()->isError();
     }
 
-    private function employeeDelete()
-    {
-        if($this->validateDelete()){
+    public function action_deleteEmployee() {
+        if($this->validateEmployeeDelete()){
             try{
                 App::getDB()->delete("employee", [
-                    "id" => $this->employeeRegisterForm->id
+                    "id" => $this->employeeForm->id
                 ]);
-                Utils::addInfoMessage('Usunięto użytkownika.');
+                Utils::addInfoMessage('Usunięto pracownika.');
             }catch(\PDOException $e) {
                 Utils::addErrorMessage('Wystąpił nieoczekiwany błąd podczas kasowania rekordu');
                 if (App::getConf()->debug)
@@ -268,7 +349,6 @@ class AdminController
             App::getRouter()->forwardTo('displayEmployeeTable');
         }
     }
-
     #########
     #PATIENT#
     #########
@@ -462,12 +542,12 @@ class AdminController
     }
 
     public function generateEmployeeRegistrationView() {
-        App::getSmarty()->assign('form', $this->employeeRegisterForm); // dane formularza do widoku
+        App::getSmarty()->assign('form', $this->employeeForm); // dane formularza do widoku
         App::getSmarty()->display('admin/registration/employeeRegistrationForm.tpl');
     }
 
     private function generateEmployeeEditForm() {
-        App::getSmarty()->assign('form', $this->employeeRegisterForm); // dane formularza dla widoku
+        App::getSmarty()->assign('form', $this->employeeForm); // dane formularza dla widoku
         App::getSmarty()->display('admin/edit/editEmployeeForm.tpl');
     }
 

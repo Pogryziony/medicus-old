@@ -14,8 +14,8 @@ Utils::addRoute('generateAdminPatientRegistrationView', 'AdminController');
 Utils::addRoute('generateEmployeeRegisterForm', 'AdminController');
 Utils::addRoute('registerEmployee', 'AdminController');
 Utils::addRoute('editEmployee', 'AdminController');
-Utils::addRoute('employeeSave', 'AdminController');
-Utils::addRoute('employeeDelete', 'AdminController',['admin']);
+Utils::addRoute('saveEmployee', 'AdminController');
+Utils::addRoute('deleteEmployee', 'AdminController');
 
 Utils::addRoute('showEmployeeLoginForm', 'EmployeeController');
 Utils::addRoute('employeeLogin', 'EmployeeController');
