@@ -6,6 +6,7 @@
             <h2>Formularz rejestracji wizyty</h2>
             <form method="POST" action="{$conf->action_url}editAppointment">
                 <div class="row-cols-xl-auto " align="center">
+                    <input type="id" class="form-control visually-hidden" name="id" placeholder="id" value="{if $action === "editAppointment"}{$form->id}{/if}" required>
                     <div class="col-xl-3 ">
                         <label for="pesel">Pesel pacjenta</label>
                         <input type="text" class="form-control" name="pesel" placeholder="Pesel" value="{$form->patientPesel}" required>

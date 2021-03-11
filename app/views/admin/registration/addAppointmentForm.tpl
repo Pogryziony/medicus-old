@@ -4,7 +4,7 @@
     <div id="featured">
         <div class="container" xmlns="http://www.w3.org/1999/html">
             <h2>Formularz rejestracji wizyty</h2>
-            <form method="POST" action="{$conf->action_url}registerNewAppointment">
+            <form method="POST" action="{$conf->action_url}registerAppointment">
                 <div class="row-cols-xl-auto " align="center">
                     <div class="col-xl-3 ">
                         <label for="pesel">Pesel pacjenta</label>
