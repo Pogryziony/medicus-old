@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2021-03-08 23:16:22
+/* Smarty version 3.1.34-dev-7, created on 2021-03-12 09:11:42
   from 'C:\xampp\htdocs\medicus\app\views\admin\registration\patientAdminRegistrationForm.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_6046a236bca096_44501478',
+  'unifunc' => 'content_604b223e18c8b8_37607248',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5c1d31fe63c38805ebfc27fde7be15a9bcfeb878' => 
     array (
       0 => 'C:\\xampp\\htdocs\\medicus\\app\\views\\admin\\registration\\patientAdminRegistrationForm.tpl',
-      1 => 1615241641,
+      1 => 1615536687,
       2 => 'file',
     ),
   ),
@@ -21,24 +21,24 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:common_elements/navigation/employeeModuleNav.tpl' => 1,
   ),
 ),false)) {
-function content_6046a236bca096_44501478 (Smarty_Internal_Template $_smarty_tpl) {
+function content_604b223e18c8b8_37607248 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_7126799626046a236bbfc05_32173736', "content");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1427205716604b223e17f4f8_37519299', "content");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "common.tpl");
 }
 /* {block "content"} */
-class Block_7126799626046a236bbfc05_32173736 extends Smarty_Internal_Block
+class Block_1427205716604b223e17f4f8_37519299 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_7126799626046a236bbfc05_32173736',
+    0 => 'Block_1427205716604b223e17f4f8_37519299',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -68,7 +68,7 @@ registerPatient">
 
                     <div class="col-xl-3">
                         <label for="second_name">Drugie imie</label>
-                        <input type="second_name" class="form-control" name="second_name" value="<?php echo $_smarty_tpl->tpl_vars['form']->value->second_name;?>
+                        <input type="second_name" class="form-control" name="second_name" value="<?php echo $_smarty_tpl->tpl_vars['form']->value->secondName;?>
 " placeholder="Drugie imie">
                         <br/>
                     </div>
@@ -103,14 +103,14 @@ registerPatient">
 
                     <div class="col-xl-3">
                         <label for="house_number">Numer domu lub bloku</label>
-                        <input type="house_number" class="form-control" name="house_number" placeholder="Numer domu lub bloku" value="<?php echo $_smarty_tpl->tpl_vars['form']->value->house_number;?>
+                        <input type="house_number" class="form-control" name="house_number" placeholder="Numer domu lub bloku" value="<?php echo $_smarty_tpl->tpl_vars['form']->value->houseNumber;?>
 ">
                         <br/>
                     </div>
 
                     <div class="col-xl-3">
                         <label for="flat_number">Numer mieszkania</label>
-                        <input type="flat_number" class="form-control" name="flat_number" placeholder="Numer mieszkania" value="<?php echo $_smarty_tpl->tpl_vars['form']->value->flat_number;?>
+                        <input type="flat_number" class="form-control" name="flat_number" placeholder="Numer mieszkania" value="<?php echo $_smarty_tpl->tpl_vars['form']->value->flatNumber;?>
 ">
                         <br/>
                     </div>
@@ -134,6 +134,21 @@ registerPatient">
                         <input type="password" class="form-control" name="password" placeholder="Hasło" value="<?php echo $_smarty_tpl->tpl_vars['form']->value->password;?>
 ">
                         <br/>
+                    </div>
+
+                    <div class="col-xl-3">
+                        <div class="panel panel-info" width="50%">
+                            <div class="panel-heading">
+                                <label for="flexRadioDefault">Czy użytkownik jest aktywny:</label>
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-check">
+                                    <input type="checkbox" id="active" name="active" value="true" <?php if ($_smarty_tpl->tpl_vars['form']->value->isActive === "true") {?> checked<?php }?>>
+                                    <label for="active">Aktywny</label>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
                     <button type="submit" class="btn btn-default btn-lg">Zarejestruj</button>
                 </div>

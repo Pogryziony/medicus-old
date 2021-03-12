@@ -11,9 +11,9 @@ use core\Utils;
 use core\Validator;
 
 class AppointmentController {
-    private $appointmentForm;
-    private $employeeForm;
-    private $patientRegisterForm;
+    protected $appointmentForm;
+    protected $employeeForm;
+    protected $patientRegisterForm;
 
     public function __construct() {
         $this->appointmentForm = new AppointmentForm();

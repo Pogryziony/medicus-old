@@ -13,7 +13,6 @@
                 <table class="table table-hover" align="center">
                     <thead>
                     <tr>
-                        <th>Id</th>
                         <th>Pesel</th>
                         <th>Imię</th>
                         <th>Drugie imię</th>
@@ -31,7 +30,6 @@
                     <tbody>
                     {foreach $patient as $pat}
                         <tr>
-                            <td>{$pat["id"]}</td>
                             <td>{$pat["pesel"]}</td>
                             <td>{$pat["name"]}</td>
                             <td>{($pat["second_name"]) ? $pat["second_name"] : "---"}</td>
@@ -53,8 +51,8 @@
                                         Rozwiń
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="actionDrop">
-                                        <li><a class="glyphicon glyphicon-pencil" aria-hidden="true" data-target="#" href="#" >Edytuj</a></li>
-                                        <li><a class="glyphicon glyphicon-trash" aria-hidden="true" href="#">Usuń</a></li>
+                                        <li><a class="glyphicon glyphicon-pencil" aria-hidden="true" onclick="location.href='{$conf->action_url}editPatient/{$pat['id']}';" >Edytuj</a></li>
+                                        <li><a class="glyphicon glyphicon-trash" aria-hidden="true" onclick="location.href='{$conf->action_url}deletePatient/{$pat['id']}';">Usuń</a></li>
                                     </ul>
                                 </div>
                             </td>

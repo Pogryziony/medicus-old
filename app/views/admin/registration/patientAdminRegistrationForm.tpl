@@ -20,7 +20,7 @@
 
                     <div class="col-xl-3">
                         <label for="second_name">Drugie imie</label>
-                        <input type="second_name" class="form-control" name="second_name" value="{$form->second_name}" placeholder="Drugie imie">
+                        <input type="second_name" class="form-control" name="second_name" value="{$form->secondName}" placeholder="Drugie imie">
                         <br/>
                     </div>
 
@@ -50,13 +50,13 @@
 
                     <div class="col-xl-3">
                         <label for="house_number">Numer domu lub bloku</label>
-                        <input type="house_number" class="form-control" name="house_number" placeholder="Numer domu lub bloku" value="{$form->house_number}">
+                        <input type="house_number" class="form-control" name="house_number" placeholder="Numer domu lub bloku" value="{$form->houseNumber}">
                         <br/>
                     </div>
 
                     <div class="col-xl-3">
                         <label for="flat_number">Numer mieszkania</label>
-                        <input type="flat_number" class="form-control" name="flat_number" placeholder="Numer mieszkania" value="{$form->flat_number}">
+                        <input type="flat_number" class="form-control" name="flat_number" placeholder="Numer mieszkania" value="{$form->flatNumber}">
                         <br/>
                     </div>
 
@@ -76,6 +76,21 @@
                         <label for="password">Hasło</label>
                         <input type="password" class="form-control" name="password" placeholder="Hasło" value="{$form->password}">
                         <br/>
+                    </div>
+
+                    <div class="col-xl-3">
+                        <div class="panel panel-info" width="50%">
+                            <div class="panel-heading">
+                                <label for="flexRadioDefault">Czy użytkownik jest aktywny:</label>
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-check">
+                                    <input type="checkbox" id="active" name="active" value="true" {if $form->isActive === "true"} checked{/if}>
+                                    <label for="active">Aktywny</label>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
                     <button type="submit" class="btn btn-default btn-lg">Zarejestruj</button>
                 </div>

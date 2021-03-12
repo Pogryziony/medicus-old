@@ -20,7 +20,7 @@
 
                     <div class="col-xl-3">
                         <label for="second_name">Drugie imie</label>
-                        <input type="second_name" class="form-control" name="second_name" value="{$form->second_name}" placeholder="Drugie imie">
+                        <input type="second_name" class="form-control" name="second_name" value="{$form->secondName}" placeholder="Drugie imie">
                         <br/>
                     </div>
 
@@ -50,13 +50,13 @@
 
                     <div class="col-xl-3">
                         <label for="house_number">Numer domu lub bloku</label>
-                        <input type="house_number" class="form-control" name="house_number" placeholder="Numer domu lub bloku" value="{$form->house_number}">
+                        <input type="house_number" class="form-control" name="house_number" placeholder="Numer domu lub bloku" value="{$form->houseNumber}">
                         <br/>
                     </div>
 
                     <div class="col-xl-3">
                         <label for="flat_number">Numer mieszkania</label>
-                        <input type="flat_number" class="form-control" name="flat_number" placeholder="Numer mieszkania" value="{$form->flat_number}">
+                        <input type="flat_number" class="form-control" name="flat_number" placeholder="Numer mieszkania" value="{$form->flatNumber}">
                         <br/>
                     </div>
 
@@ -77,6 +77,8 @@
                         <input type="password" class="form-control" name="password" placeholder="Hasło" value="{$form->password}">
                         <br/>
                     </div>
+                    <input class="visually-hidden" type="checkbox" id="active" name="active" value="{$form->isActive = "true"}" checked>
+
                     <button type="submit" class="btn btn-default btn-lg">Zarejestruj</button>
                 </div>
             </form>

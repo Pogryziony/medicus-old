@@ -8,14 +8,18 @@ App::getRouter()->setLoginRoute('login'); #action to forward if no permissions
 
 Utils::addRoute('dashboard', 'MainPageController');
 
-Utils::addRoute('registerPatient', 'AdminController');
-Utils::addRoute('generatePatientSelfRegistrationView', 'AdminController');
-Utils::addRoute('generateAdminPatientRegistrationView', 'AdminController');
 Utils::addRoute('generateEmployeeRegisterForm', 'AdminController');
 Utils::addRoute('registerEmployee', 'AdminController');
 Utils::addRoute('editEmployee', 'AdminController');
 Utils::addRoute('saveEmployee', 'AdminController');
 Utils::addRoute('deleteEmployee', 'AdminController');
+
+Utils::addRoute('generatePatientSelfRegistrationView', 'AdminController');
+Utils::addRoute('generateAdminPatientRegistrationView', 'AdminController');
+Utils::addRoute('registerPatient', 'AdminController');
+Utils::addRoute('editPatient', 'AdminController');
+Utils::addRoute('savePatient', 'AdminController');
+Utils::addRoute('deletePatient', 'AdminController');
 
 Utils::addRoute('showEmployeeLoginForm', 'EmployeeController');
 Utils::addRoute('employeeLogin', 'EmployeeController');
@@ -27,6 +31,7 @@ Utils::addRoute('displayPatientsTable', 'EmployeeController');
 Utils::addRoute('showPatientLoginForm', 'PatientController');
 Utils::addRoute('patientLogin', 'PatientController');
 Utils::addRoute('patientLogout', 'PatientController');
+Utils::addRoute('patientDashboard', 'PatientController');
 Utils::addRoute('patientDashboard', 'PatientController');
 
 

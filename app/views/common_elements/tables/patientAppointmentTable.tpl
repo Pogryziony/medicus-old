@@ -13,6 +13,7 @@
                 <table class="table table-hover" align="center">
                     <thead>
                     <tr>
+                        <th>Id</th>
                         <th>Pesel pacjenta</th>
                         <th>Pesel lekarza</th>
                         <th>Data wizyty</th>
@@ -24,6 +25,7 @@
                     <tbody>
                     {foreach $appointments as $apt}
                         <tr>
+                            <td>{$apt["id"]}</td>
                             <td>{$apt["pesel_employee"]}</td>
                             <td>{$apt["pesel_patient"]}</td>
                             <td>{$apt["date"]}</td>

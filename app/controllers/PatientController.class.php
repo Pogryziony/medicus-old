@@ -11,24 +11,19 @@ use core\Validator;
 use core\ParamUtils;
 
 class PatientController {
-    ###########
-    # ZMIENNE #
-    ###########
     private $patientLoginForm;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->patientLoginForm = new PatientLoginForm();
     }
 
-    #############
-    # LOGOWANIE #
-    #############
-
-    public function action_patientLogin() {
-        $this->checkPatientCredentials();
+    public function action_patientLogin()
+    {
+        $this->patientLogin();
     }
 
-    private function checkPatientCredentials()
+    private function patientLogin()
     {
         if (SessionUtils::load("patientSessionData", true) != null) {
             App::getRouter()->redirectTo("patientDashboard");
@@ -40,10 +35,10 @@ class PatientController {
         if (($_SERVER["REQUEST_METHOD"] === "POST") && ($this->validatePatientLogin($this->patientLoginForm->pesel, $this->patientLoginForm->password))) {
             $this->loginPatient($this->patientLoginForm->pesel);
         }
-        $this->generateLoginForm();
+        $this->generatePatientLoginForm();
     }
 
-    private function validatePatientLogin($email, $password)
+    private function validatePatientLogin($pesel, $password)
     {
         $this->patientLoginForm->pesel = ParamUtils::getFromRequest('pesel');
         $this->patientLoginForm->password = ParamUtils::getFromRequest('password');
@@ -63,7 +58,9 @@ class PatientController {
 
         $this->patientLoginForm->pesel = $v->validate($this->patientLoginForm->pesel, [
             'trim' => true,
-            'required' => true
+            'required' => true,
+            'length' => 11,
+            'validator_message' => 'Pesel musi mieć 11 znaków.',
         ]);
 
         try {
@@ -90,7 +87,7 @@ class PatientController {
         } catch (\PDOException $e) {
             Utils::addErrorMessage('Wystąpił błąd podczas logowania.');
             if (App::getConf()->debug)
-                App::getMessages()->addMessage($e->getMessage());
+            App::getMessages()->addMessage($e->getMessage());
         }
 
         return !App::getMessages()->isError();
@@ -111,10 +108,12 @@ class PatientController {
         } catch (\PDOException $e) {
             App::getMessages()->addMessage("Wystąpił błąd podczas logowania użytkownika. Spróbuj ponownie, lub skontaktuj się z administratorem systemu");
         }
+        RoleUtils::addRole($patientData["role"]);
         SessionUtils::store("patientId", $patientData["id"]);
         $patientSessionData = new \stdClass();
         $patientSessionData->name = $patientData["name"];
         $patientSessionData->secondName = $patientData["second_name"];
+        $patientSessionData->role = $patientData["role"];
         SessionUtils::store("patientSessionData", $patientSessionData);
         App::getRouter()->redirectTo("patientDashboard");
     }
@@ -126,15 +125,12 @@ class PatientController {
         App::getRouter()->forwardTo("showPatientLoginForm");
     }
 
-    ##########
-    # WIDOKI #
-    ##########
     public function action_showPatientLoginForm()
     {
-        $this->generateLoginForm();
+        $this->generatePatientLoginForm();
     }
 
-    public function generateLoginForm()
+    public function generatePatientLoginForm()
     {
         App::getSmarty()->assign('loginForm', $this->patientLoginForm); // dane formularza do widoku
         App::getSmarty()->display('login/patientLoginForm.tpl');
@@ -144,6 +140,4 @@ class PatientController {
     {
         App::getSmarty()->display("mainPatientPage.tpl");
     }
-
-
 }
