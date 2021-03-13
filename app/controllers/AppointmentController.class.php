@@ -39,7 +39,6 @@ class AppointmentController {
                 $employeeExists = App::getDB()->get("employee", '*', [
                     "pesel" => $this->employeeForm->pesel
                 ]);
-
                 if (!$patientExists&&!$employeeExists) {
                     App::getDB()->insert("appointment", [
                         "pesel_patient" => $this->patientRegisterForm->pesel,
@@ -89,19 +88,6 @@ class AppointmentController {
             'required' => true,
             'length' => 11,
             'validator_message' => 'Pesel musi mieć 11 znaków.',
-        ]);
-
-        $this->appointmentForm->date = $v->validate($this->appointmentForm->date, [
-            "trim"=>"true",
-            "min_length"=>10,
-            "max_length"=>10,
-            "date_format"=>"Y-m-d",
-            "validator_message"=>'Niepoprawny format "Data do" (wymagany: YYYY-mm-dd)'
-        ]);
-
-        $this->appointmentForm->time = $v->validate($this->appointmentForm->time, [
-            "date_format"=>"H:i",
-            "validator_message"=>'Niepoprawny format "Godzina od" (wymagany: HH:MM)'
         ]);
 
         $this->appointmentForm->purpose = $v->validate($this->appointmentForm->purpose, [

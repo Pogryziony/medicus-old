@@ -26,7 +26,7 @@
                         <tr>
                             <td>{$eapt["pesel_employee"]}</td>
                             <td>{$eapt["pesel_patient"]}</td>
-                            <td>{$papt["date"]}</td>
+                            <td>{$eapt["date"]}</td>
                             <td>{$eapt["time"]}</td>
                             <td>{$eapt["purpose"]}</td>
                             <td>

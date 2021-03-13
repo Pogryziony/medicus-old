@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2021-03-13 14:30:22
+/* Smarty version 3.1.34-dev-7, created on 2021-03-13 18:27:34
   from 'C:\xampp\htdocs\medicus\app\views\common_elements\tables\employeeAppointmentTable.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_604cbe6e268e31_35570291',
+  'unifunc' => 'content_604cf6069cfaf5_35341247',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f4f53cc9f95206d95f771de68fe2586960b03ab1' => 
     array (
       0 => 'C:\\xampp\\htdocs\\medicus\\app\\views\\common_elements\\tables\\employeeAppointmentTable.tpl',
-      1 => 1615642000,
+      1 => 1615656452,
       2 => 'file',
     ),
   ),
@@ -21,24 +21,24 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:common_elements/navigation/employeeModuleNav.tpl' => 1,
   ),
 ),false)) {
-function content_604cbe6e268e31_35570291 (Smarty_Internal_Template $_smarty_tpl) {
+function content_604cf6069cfaf5_35341247 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_72367416604cbe6e259e29_88607379', "content");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1264523882604cf6069c0299_58273447', "content");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "common.tpl");
 }
 /* {block "content"} */
-class Block_72367416604cbe6e259e29_88607379 extends Smarty_Internal_Block
+class Block_1264523882604cf6069c0299_58273447 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_72367416604cbe6e259e29_88607379',
+    0 => 'Block_1264523882604cf6069c0299_58273447',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -78,7 +78,7 @@ $_smarty_tpl->tpl_vars['eapt']->do_else = false;
 </td>
                             <td><?php echo $_smarty_tpl->tpl_vars['eapt']->value["pesel_patient"];?>
 </td>
-                            <td><?php echo $_smarty_tpl->tpl_vars['papt']->value["date"];?>
+                            <td><?php echo $_smarty_tpl->tpl_vars['eapt']->value["date"];?>
 </td>
                             <td><?php echo $_smarty_tpl->tpl_vars['eapt']->value["time"];?>
 </td>

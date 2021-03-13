@@ -85,7 +85,7 @@ class EmployeeController {
             //zalogowany => przekieruj na główną akcję (z przekazaniem messages przez sesję)
             App::getMessages()->addMessage(new Message('Poprawnie zalogowano do systemu', Message::INFO));
             $employeeRow = App::getDB()->get('employee', ['id','pesel','role'],[
-                "pesel" => $this->employeeForm->pesel,
+                "email" => $this->employeeForm->email,
             ]);
             // create employeeData object to store data of employee in there
             $employeeData = new \stdClass();
