@@ -12,7 +12,6 @@
                 <table class="table table-hover" align="center">
                     <thead>
                     <tr>
-                        <th>Id</th>
                         <th>Pesel</th>
                         <th>Imię</th>
                         <th>Drugie imię</th>
@@ -26,7 +25,6 @@
                     <tbody>
                     {foreach $employee as $emp}
                         <tr>
-                            <td>{$emp["id"]}</td>
                             <td>{$emp["pesel"]}</td>
                             <td>{$emp["name"]}</td>
                             <td>{($emp["second_name"]) ? $emp["second_name"] : "---"}</td>

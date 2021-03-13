@@ -79,14 +79,21 @@ class PatientController {
     }
 
     public function action_patientLogin() {
-        if ($this->validatePatientLogin()) {
+        if (SessionUtils::load("patientData", true) != null) {
+            App::getRouter()->redirectTo("patientDashboard");
+        }
+        if ($_SERVER["REQUEST_METHOD"] === "POST" && $this->validatePatientLogin()) {
             //zalogowany => przekieruj na główną akcję (z przekazaniem messages przez sesję)
             App::getMessages()->addMessage(new Message('Poprawnie zalogowano do systemu', Message::INFO));
-            $row = App::getDB()->get('patient', ['id','pesel'],[
+            $patientRow = App::getDB()->get('patient', ['id','pesel'],[
                 "pesel" => $this->patientRegisterForm->pesel]);
-            SessionUtils::store('pat_id', $row['id']);
-            SessionUtils::store('pat_pesel', $row['pesel']);
-            App::getRouter()->redirectTo("patientDashboard");
+            // create employeeData object to store data of employee in there
+            $patientData = new \stdClass();
+            $patientData->id = $patientRow["id"];
+            $patientData->pesel = $patientRow["pesel"];
+            SessionUtils::storeObject("patientData", $patientData);
+            // if request method is post and validation is okay, login user
+            App::getRouter()->redirectTo('patientDashboard');
         } else {
             //niezalogowany => pozostań na stronie logowania
             $this->generatePatientLoginView();
@@ -95,12 +102,6 @@ class PatientController {
 
     public function generatePatientLoginView() {
         App::getSmarty()->assign('form', $this->patientRegisterForm); // dane formularza do widoku
-        App::getSmarty()->display('login/patientLoginForm.tpl');
-    }
-
-
-    public function generateView() {
-        App::getSmarty()->assign('patientRegisterForm', $this->patientRegisterForm); // dane formularza do widoku
         App::getSmarty()->display('login/patientLoginForm.tpl');
     }
 

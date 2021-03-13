@@ -18,10 +18,6 @@
                     <input type="password" class="form-control" name="password" placeholder="Hasło">
                 </div>
                 <div class="col-xl-3">
-                    <input type="checkbox" id="remember-me" name="remember-me">
-                    <label for="demo-copy">Zapamiętaj mnie</label>
-                </div>
-                <div class="col-xl-3">
                     <button type="submit" class="btn btn-default btn-lg btn-block">Zaloguj</button>
                 </div>
             </div>

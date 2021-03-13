@@ -4,7 +4,7 @@ use core\App;
 use core\Utils;
 
 App::getRouter()->setDefaultRoute('dashboard'); #default action
-App::getRouter()->setLoginRoute('login'); #action to forward if no permissions
+App::getRouter()->setLoginRoute('showPatientLoginForm'); #action to forward if no permissions
 
 Utils::addRoute('dashboard', 'MainPageController');
 
@@ -21,7 +21,7 @@ Utils::addRoute('editPatient', 'AdminController');
 Utils::addRoute('savePatient', 'AdminController');
 Utils::addRoute('deletePatient', 'AdminController');
 
-Utils::addRoute('showEmployeeLoginForm', 'EmployeeController');
+Utils::addRoute('generateEmployeeLoginForm', 'EmployeeController');
 Utils::addRoute('employeeLogin', 'EmployeeController');
 Utils::addRoute('employeeLogout', 'EmployeeController');
 Utils::addRoute('employeeDashboard', 'EmployeeController');
@@ -34,11 +34,8 @@ Utils::addRoute('patientLogout', 'PatientController');
 Utils::addRoute('patientDashboard', 'PatientController');
 Utils::addRoute('patientDashboard', 'PatientController');
 
-
-
-
 Utils::addRoute('displayAllAppointments', 'AppointmentController');
-Utils::addRoute('displaySelfEmployeeAppointments', 'AppointmentController');
+Utils::addRoute('displayEmployeeAppointments', 'AppointmentController');
 Utils::addRoute('displayPatientAppointments', 'AppointmentController');
 Utils::addRoute('showAppointments', 'AppointmentController');
 Utils::addRoute('generateAddAppointmentForm', 'AppointmentController');

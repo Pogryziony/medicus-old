@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2021-03-12 23:40:06
+/* Smarty version 3.1.34-dev-7, created on 2021-03-13 12:20:03
   from 'C:\xampp\htdocs\medicus\app\views\common_elements\tables\employeesTable.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_604bedc69db5e6_92742043',
+  'unifunc' => 'content_604c9fe364e2e4_30250934',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '550834581cbd32f238189c92639fb6fd9a3039a0' => 
     array (
       0 => 'C:\\xampp\\htdocs\\medicus\\app\\views\\common_elements\\tables\\employeesTable.tpl',
-      1 => 1615584649,
+      1 => 1615634402,
       2 => 'file',
     ),
   ),
@@ -21,24 +21,24 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:common_elements/navigation/employeeModuleNav.tpl' => 1,
   ),
 ),false)) {
-function content_604bedc69db5e6_92742043 (Smarty_Internal_Template $_smarty_tpl) {
+function content_604c9fe364e2e4_30250934 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1759771125604bedc69ca082_47856722', "content");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1058998304604c9fe3635db6_48870867', "content");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "common.tpl");
 }
 /* {block "content"} */
-class Block_1759771125604bedc69ca082_47856722 extends Smarty_Internal_Block
+class Block_1058998304604c9fe3635db6_48870867 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_1759771125604bedc69ca082_47856722',
+    0 => 'Block_1058998304604c9fe3635db6_48870867',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -57,7 +57,6 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
                 <table class="table table-hover" align="center">
                     <thead>
                     <tr>
-                        <th>Id</th>
                         <th>Pesel</th>
                         <th>Imię</th>
                         <th>Drugie imię</th>
@@ -76,8 +75,6 @@ if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['emp']->value) {
 $_smarty_tpl->tpl_vars['emp']->do_else = false;
 ?>
                         <tr>
-                            <td><?php echo $_smarty_tpl->tpl_vars['emp']->value["id"];?>
-</td>
                             <td><?php echo $_smarty_tpl->tpl_vars['emp']->value["pesel"];?>
 </td>
                             <td><?php echo $_smarty_tpl->tpl_vars['emp']->value["name"];?>

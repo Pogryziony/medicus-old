@@ -22,7 +22,9 @@
                 Panel content
             </div>
         </div>
-
+        {if \core\RoleUtils::inRole('admin')}
+            //jakiś HTML ...
+        {/if}
     </div>
     </br>
 

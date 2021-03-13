@@ -2,8 +2,9 @@
 
 namespace app\controllers;
 
-use app\forms\employee\EmployeeLoginForm;
+use app\forms\employee\EmployeeForm;
 use core\App;
+use core\Message;
 use core\RoleUtils;
 use core\SessionUtils;
 use core\Utils;
@@ -11,73 +12,58 @@ use core\Validator;
 use core\ParamUtils;
 
 class EmployeeController {
-    private $employeeLoginForm;
+    private $employeeForm;
 
     public function __construct()
     {
-        $this->employeeLoginForm = new EmployeeLoginForm();
+        $this->employeeForm = new EmployeeForm();
     }
 
-    public function action_employeeLogin()
+    public function validateEmployeeLogin(): bool
     {
-        $this->employeeLogin();
-    }
+        $this->employeeForm->email = ParamUtils::getFromRequest('email');
+        $this->employeeForm->password = ParamUtils::getFromRequest('password');
+        $this->employeeForm->role = ParamUtils::getFromRequest('role');
+        $this->employeeForm->pesel = ParamUtils::getFromRequest('pesel');
 
-    private function employeeLogin()
-    {
-        if (SessionUtils::load("employeeSessionData", true) != null) {
-            App::getRouter()->redirectTo("employeeDashboard");
-        }
-        $this->employeeLoginForm->email = ParamUtils::getFromRequest('email');
-        $this->employeeLoginForm->password = ParamUtils::getFromRequest('password');
-
-        // if request method is post and validation is okay, login user
-        if (($_SERVER["REQUEST_METHOD"] === "POST") && ($this->validateEmployeeLogin($this->employeeLoginForm->email, $this->employeeLoginForm->password))) {
-            $this->loginEmployee($this->employeeLoginForm->email);
-        }
-        $this->generateLoginForm();
-    }
-
-    private function validateEmployeeLogin($email, $password)
-    {
-        $this->employeeLoginForm->email = ParamUtils::getFromRequest('email');
-        $this->employeeLoginForm->password = ParamUtils::getFromRequest('password');
-
-        if (!isset($this->employeeLoginForm->email))
+        if (!isset($this->employeeForm->email))
             return false;
-        if (empty($this->employeeLoginForm->email)) {
-            Utils::addErrorMessage('Nie podano emaila.');
+        if (empty($this->employeeForm->email)){
+            Utils::addErrorMessage('Nie podano adresu email.');
         }
-        if (empty($this->employeeLoginForm->password)) {
+        if (empty($this->employeeForm->password)) {
             Utils::addErrorMessage('Nie podano hasła.');
         }
+
         if (App::getMessages()->isError())
             return false;
 
         $v = new Validator();
 
-        $this->employeeLoginForm->email = $v->validate($this->employeeLoginForm->email, [
+        $this->employeeForm->email = $v->validate($this->employeeForm->email, [
             'trim' => true,
             'required' => true
         ]);
 
-        try {
-            $employeeRow = App::getDB()->get("employee", [
-                "password",
-                "active"
+        try{
+            $employeeRow = App::getDB()->get('employee', [
+                'password',
+                'role',
+                'active'
             ], [
-                "email" => $this->employeeLoginForm->email
+                'email' => $this->employeeForm->email
             ]);
-            if (!isset($employeeRow)) {
-                Utils::addErrorMessage('Nieprawidłowy login lub hasło.');
+
+            if(!isset($employeeRow)){
+                Utils::addErrorMessage('Nieprawidłowy pesel lub hasło.');
                 return false;
-            } else {
-                if ($this->employeeLoginForm->password != $employeeRow["password"]) {
-                    Utils::addErrorMessage('Nieprawidłowy login lub hasło.');
+            }else {
+                if ($this->employeeForm->password != $employeeRow['password']) {
+                    Utils::addErrorMessage('Nieprawidłowy pesel lub hasło.');
                     return false;
                 }
 
-                if (1 != intval($employeeRow["active"])) {
+                if (1 != intval($employeeRow['active'])) {
                     Utils::addErrorMessage('Konto użytkownika nie jest aktywne.');
                     return false;
                 }
@@ -85,59 +71,58 @@ class EmployeeController {
         } catch (\PDOException $e) {
             Utils::addErrorMessage('Wystąpił błąd podczas logowania.');
             if (App::getConf()->debug)
-            App::getMessages()->addMessage($e->getMessage());
+                App::getMessages()->addMessage($e->getMessage());
         }
 
         return !App::getMessages()->isError();
-
     }
 
-    private function loginEmployee($email)
-    {
-        $employeeData = array();
-        try {
-            $employeeData = App::getDB()->get("employee", [
-                "password",
-                "active",
-                "role",
-            ], [
-                "email" => $email
-            ]);
-            $employeeData = $employeeData[0];
-        } catch (\PDOException $e) {
-            App::getMessages()->addMessage("Wystąpił błąd podczas logowania użytkownika. Spróbuj ponownie, lub skontaktuj się z administratorem systemu");
+    public function action_employeeLogin() {
+        if (SessionUtils::loadObject("employeeData", true) != null) {
+            App::getRouter()->redirectTo("employeeDashboard");
         }
-        RoleUtils::addRole($employeeData["role"]);
-        SessionUtils::store("employeeId", $employeeData["id"]);
-        $employeeSessionData = new \stdClass();
-        $employeeSessionData->name = $employeeData["name"];
-        $employeeSessionData->secondName = $employeeData["second_name"];
-        $employeeSessionData->role = $employeeData["role"];
-        SessionUtils::store("employeeSessionData", $employeeSessionData);
-        App::getRouter()->redirectTo("employeeDashboard");
+        if ($_SERVER["REQUEST_METHOD"] === "POST" && $this->validateEmployeeLogin()) {
+            //zalogowany => przekieruj na główną akcję (z przekazaniem messages przez sesję)
+            App::getMessages()->addMessage(new Message('Poprawnie zalogowano do systemu', Message::INFO));
+            $employeeRow = App::getDB()->get('employee', ['id','pesel','role'],[
+                "pesel" => $this->employeeForm->pesel,
+            ]);
+            // create employeeData object to store data of employee in there
+            $employeeData = new \stdClass();
+            $employeeData->id = $employeeRow["id"];
+            $employeeData->pesel = $employeeRow["pesel"];
+            $employeeData->role = $employeeRow["role"];
+            RoleUtils::addRole($employeeData->role);
+            SessionUtils::storeObject("employeeData", $employeeData);
+            // if request method is post and validation is okay, login user
+            App::getRouter()->redirectTo('employeeDashboard');
+        } else {
+            //niezalogowany => pozostań na stronie logowania
+            $this->generateEmployeeLoginForm();
+        }
     }
 
     public function action_employeeLogout()
     {
         session_destroy();
         Utils::addInfoMessage('Zostałeś wylogowany.');
-        App::getRouter()->forwardTo("showEmployeeLoginForm");
+        App::getRouter()->redirectTo('generateEmployeeLoginForm');
     }
 
-    public function action_showEmployeeLoginForm()
+    public function action_generateEmployeeLoginForm()
     {
-        $this->generateLoginForm();
+        $this->generateEmployeeLoginForm();
     }
 
-    public function generateLoginForm()
+    public function generateEmployeeLoginForm()
     {
-        App::getSmarty()->assign('loginForm', $this->employeeLoginForm); // dane formularza do widoku
+        App::getSmarty()->assign('loginForm', $this->employeeForm); // dane formularza do widoku
         App::getSmarty()->display('login/employeeLoginForm.tpl');
     }
 
     public function action_employeeDashboard()
     {
-        App::getSmarty()->display("mainEmployeePage.tpl");
+        App::getSmarty()->display('mainEmployeePage.tpl');
     }
 
     public function action_displayPatientsTable()
@@ -150,7 +135,7 @@ class EmployeeController {
                 Utils::addErrorMessage($e->getMessage());
         }
         App::getSmarty()->assign('patient', $this->patients);
-        App::getSmarty()->display("common_elements/tables/patientTable.tpl");
+        App::getSmarty()->display('common_elements/tables/patientTable.tpl');
     }
 
     public function action_displayEmployeeTable()
@@ -163,6 +148,6 @@ class EmployeeController {
                 Utils::addErrorMessage($e->getMessage());
         }
         App::getSmarty()->assign('employee', $this->employees);
-        App::getSmarty()->display("common_elements/tables/employeesTable.tpl");
+        App::getSmarty()->display('common_elements/tables/employeesTable.tpl');
     }
 }

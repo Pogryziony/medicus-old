@@ -7,6 +7,7 @@ use app\forms\employee\EmployeeForm;
 use app\forms\patient\PatientRegisterForm;
 use core\App;
 use core\ParamUtils;
+use core\RoleUtils;
 use core\SessionUtils;
 use core\Utils;
 use core\Validator;
@@ -140,7 +141,8 @@ class AppointmentController {
     private function displayPatientAppointments()
     {
         $patientAppointments = array();
-        $this->patientRegisterForm->pesel = SessionUtils::load('pat_pesel',true);
+        $patientData = SessionUtils::loadObject('patientData',true);
+        $this->patientRegisterForm->pesel = $patientData->pesel;
         try {
             $patientAppointments = App::getDB()->select("appointment", "*", [
                 "pesel_patient" => $this->patientRegisterForm->pesel
@@ -152,6 +154,28 @@ class AppointmentController {
         }
         App::getSmarty()->assign('patientAppointments', $patientAppointments);
         App::getSmarty()->display("common_elements/tables/patientAppointmentTable.tpl");
+    }
+
+    public function action_displayEmployeeAppointments() {
+        $this->displayEmployeeAppointments();
+    }
+
+    private function displayEmployeeAppointments()
+    {
+        $employeeAppointments = array();
+        $employeeData = SessionUtils::loadObject('employeeData',true);
+        $this->employeeForm->pesel = $employeeData->pesel;
+        try {
+            $employeeAppointments = App::getDB()->select("appointment", "*", [
+                "pesel_employee" => $this->employeeForm->pesel
+            ]);
+        } catch (\PDOException $e) {
+            Utils::addErrorMessage('Wystąpił błąd podczas odczytu rekordu');
+            if (App::getConf()->debug)
+                Utils::addErrorMessage($e->getMessage());
+        }
+        App::getSmarty()->assign('employeeAppointments', $employeeAppointments);
+        App::getSmarty()->display("common_elements/tables/employeeAppointmentTable.tpl");
     }
 
     public function action_generateAddAppointmentForm() {

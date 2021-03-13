@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2021-03-12 22:56:18
+/* Smarty version 3.1.34-dev-7, created on 2021-03-13 12:22:06
   from 'C:\xampp\htdocs\medicus\app\views\login\patientLoginForm.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_604be382c1cc20_34751262',
+  'unifunc' => 'content_604ca05e7f4c49_20236281',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0fbeccdafcbed5a7cba79935b44a214b32a9a176' => 
     array (
       0 => 'C:\\xampp\\htdocs\\medicus\\app\\views\\login\\patientLoginForm.tpl',
-      1 => 1615584649,
+      1 => 1615633713,
       2 => 'file',
     ),
   ),
@@ -21,24 +21,24 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:common_elements/navigation/loginNav.tpl' => 1,
   ),
 ),false)) {
-function content_604be382c1cc20_34751262 (Smarty_Internal_Template $_smarty_tpl) {
+function content_604ca05e7f4c49_20236281 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1701689434604be382c0e295_43676553', "content");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_24166428604ca05e7ed389_19704871', "content");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "common.tpl");
 }
 /* {block "content"} */
-class Block_1701689434604be382c0e295_43676553 extends Smarty_Internal_Block
+class Block_24166428604ca05e7ed389_19704871 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_1701689434604be382c0e295_43676553',
+    0 => 'Block_24166428604ca05e7ed389_19704871',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -62,10 +62,6 @@ patientLogin">
                 <div class="col-xl-3">
                     <label for="password">Hasło</label>
                     <input type="password" class="form-control" name="password" placeholder="Hasło">
-                </div>
-                <div class="col-xl-3">
-                    <input type="checkbox" id="remember-me" name="remember-me">
-                    <label for="demo-copy">Zapamiętaj mnie</label>
                 </div>
                 <div class="col-xl-3">
                     <button type="submit" class="btn btn-default btn-lg btn-block">Zaloguj</button>
