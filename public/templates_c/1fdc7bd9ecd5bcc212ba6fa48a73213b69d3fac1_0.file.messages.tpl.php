@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2021-03-08 03:42:44
+/* Smarty version 3.1.34-dev-7, created on 2021-03-12 22:56:18
   from 'C:\xampp\htdocs\medicus\app\views\common_elements\messages\messages.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_60458f248e3a73_58521375',
+  'unifunc' => 'content_604be382c6ac49_60774742',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1fdc7bd9ecd5bcc212ba6fa48a73213b69d3fac1' => 
     array (
       0 => 'C:\\xampp\\htdocs\\medicus\\app\\views\\common_elements\\messages\\messages.tpl',
-      1 => 1615170974,
+      1 => 1615335016,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_60458f248e3a73_58521375 (Smarty_Internal_Template $_smarty_tpl) {
+function content_604be382c6ac49_60774742 (Smarty_Internal_Template $_smarty_tpl) {
 if (!$_smarty_tpl->tpl_vars['msgs']->value->isEmpty()) {?>
     <ul class="list-group alert-danger">
         <?php

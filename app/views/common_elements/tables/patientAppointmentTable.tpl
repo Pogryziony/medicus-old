@@ -1,6 +1,6 @@
 {extends file="common.tpl"}
 {block name="content"}
-    {include file="common_elements/navigation/employeeModuleNav.tpl"}
+    {include file="common_elements/navigation/patientModuleNav.tpl"}
 
     <div id="featured">
 
@@ -23,14 +23,14 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {foreach $appointments as $apt}
+                    {foreach $patientAppointments as $papt}
                         <tr>
-                            <td>{$apt["id"]}</td>
-                            <td>{$apt["pesel_employee"]}</td>
-                            <td>{$apt["pesel_patient"]}</td>
-                            <td>{$apt["date"]}</td>
-                            <td>{$apt["time"]}</td>
-                            <td>{$apt["purpose"]}</td>
+                            <td>{$papt["id"]}</td>
+                            <td>{$papt["pesel_employee"]}</td>
+                            <td>{$papt["pesel_patient"]}</td>
+                            <td>{$papt["date"]}</td>
+                            <td>{$papt["time"]}</td>
+                            <td>{$papt["purpose"]}</td>
                             <td>
                                 <div class="dropdown">
                                     <button class="btn btn-default dropdown-toggle"
@@ -50,10 +50,6 @@
                         </tr>
                     {/foreach}
                 </table>
-            </div>
-
-            <div class="panel-footer">
-                <button type="button" class="button btn-lg" onclick="location.href='{$conf->action_root}generateAddAppointmentForm';">Dodaj wizytę</button>
             </div>
         </div>
 

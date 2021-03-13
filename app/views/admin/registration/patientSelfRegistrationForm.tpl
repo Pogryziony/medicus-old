@@ -77,7 +77,7 @@
                         <input type="password" class="form-control" name="password" placeholder="Hasło" value="{$form->password}">
                         <br/>
                     </div>
-                    <input class="visually-hidden" type="checkbox" id="active" name="active" value="{$form->isActive = "true"}" checked>
+                    <input class="visually-hidden" type="checkbox" id="active" name="active" value="true" checked>
 
                     <button type="submit" class="btn btn-default btn-lg">Zarejestruj</button>
                 </div>

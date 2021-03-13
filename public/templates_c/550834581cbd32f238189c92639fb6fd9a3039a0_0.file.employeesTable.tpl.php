@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2021-03-10 22:37:30
+/* Smarty version 3.1.34-dev-7, created on 2021-03-12 23:40:06
   from 'C:\xampp\htdocs\medicus\app\views\common_elements\tables\employeesTable.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_60493c1a1d10d7_66745171',
+  'unifunc' => 'content_604bedc69db5e6_92742043',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '550834581cbd32f238189c92639fb6fd9a3039a0' => 
     array (
       0 => 'C:\\xampp\\htdocs\\medicus\\app\\views\\common_elements\\tables\\employeesTable.tpl',
-      1 => 1615412246,
+      1 => 1615584649,
       2 => 'file',
     ),
   ),
@@ -21,24 +21,24 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:common_elements/navigation/employeeModuleNav.tpl' => 1,
   ),
 ),false)) {
-function content_60493c1a1d10d7_66745171 (Smarty_Internal_Template $_smarty_tpl) {
+function content_604bedc69db5e6_92742043 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_126279810460493c1a1bafd0_58244633', "content");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1759771125604bedc69ca082_47856722', "content");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "common.tpl");
 }
 /* {block "content"} */
-class Block_126279810460493c1a1bafd0_58244633 extends Smarty_Internal_Block
+class Block_1759771125604bedc69ca082_47856722 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_126279810460493c1a1bafd0_58244633',
+    0 => 'Block_1759771125604bedc69ca082_47856722',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2021-03-12 13:25:57
+/* Smarty version 3.1.34-dev-7, created on 2021-03-12 22:56:18
   from 'C:\xampp\htdocs\medicus\app\views\common_elements\features.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_604b5dd5b5f1a5_41654906',
+  'unifunc' => 'content_604be382f085b1_42598504',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'eeec85aac61d272fa7bf65a473f0b320d1d5d164' => 
     array (
       0 => 'C:\\xampp\\htdocs\\medicus\\app\\views\\common_elements\\features.tpl',
-      1 => 1615551949,
+      1 => 1615584649,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_604b5dd5b5f1a5_41654906 (Smarty_Internal_Template $_smarty_tpl) {
+function content_604be382f085b1_42598504 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div id="featured">
     <div class="container">
         <header>

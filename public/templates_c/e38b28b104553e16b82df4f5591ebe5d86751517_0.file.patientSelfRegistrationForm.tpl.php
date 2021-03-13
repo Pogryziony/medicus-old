@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2021-03-08 23:16:34
+/* Smarty version 3.1.34-dev-7, created on 2021-03-12 23:10:35
   from 'C:\xampp\htdocs\medicus\app\views\admin\registration\patientSelfRegistrationForm.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_6046a242e225a1_67681018',
+  'unifunc' => 'content_604be6db0b1fe1_42707952',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e38b28b104553e16b82df4f5591ebe5d86751517' => 
     array (
       0 => 'C:\\xampp\\htdocs\\medicus\\app\\views\\admin\\registration\\patientSelfRegistrationForm.tpl',
-      1 => 1615170974,
+      1 => 1615587029,
       2 => 'file',
     ),
   ),
@@ -21,24 +21,24 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:common_elements/navigation/loginNav.tpl' => 1,
   ),
 ),false)) {
-function content_6046a242e225a1_67681018 (Smarty_Internal_Template $_smarty_tpl) {
+function content_604be6db0b1fe1_42707952 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_10072859056046a242e17984_97127933', "content");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1602818513604be6db0a6057_47747909', "content");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "common.tpl");
 }
 /* {block "content"} */
-class Block_10072859056046a242e17984_97127933 extends Smarty_Internal_Block
+class Block_1602818513604be6db0a6057_47747909 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_10072859056046a242e17984_97127933',
+    0 => 'Block_1602818513604be6db0a6057_47747909',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -68,7 +68,7 @@ registerPatient">
 
                     <div class="col-xl-3">
                         <label for="second_name">Drugie imie</label>
-                        <input type="second_name" class="form-control" name="second_name" value="<?php echo $_smarty_tpl->tpl_vars['form']->value->second_name;?>
+                        <input type="second_name" class="form-control" name="second_name" value="<?php echo $_smarty_tpl->tpl_vars['form']->value->secondName;?>
 " placeholder="Drugie imie">
                         <br/>
                     </div>
@@ -103,14 +103,14 @@ registerPatient">
 
                     <div class="col-xl-3">
                         <label for="house_number">Numer domu lub bloku</label>
-                        <input type="house_number" class="form-control" name="house_number" placeholder="Numer domu lub bloku" value="<?php echo $_smarty_tpl->tpl_vars['form']->value->house_number;?>
+                        <input type="house_number" class="form-control" name="house_number" placeholder="Numer domu lub bloku" value="<?php echo $_smarty_tpl->tpl_vars['form']->value->houseNumber;?>
 ">
                         <br/>
                     </div>
 
                     <div class="col-xl-3">
                         <label for="flat_number">Numer mieszkania</label>
-                        <input type="flat_number" class="form-control" name="flat_number" placeholder="Numer mieszkania" value="<?php echo $_smarty_tpl->tpl_vars['form']->value->flat_number;?>
+                        <input type="flat_number" class="form-control" name="flat_number" placeholder="Numer mieszkania" value="<?php echo $_smarty_tpl->tpl_vars['form']->value->flatNumber;?>
 ">
                         <br/>
                     </div>
@@ -135,6 +135,8 @@ registerPatient">
 ">
                         <br/>
                     </div>
+                    <input class="visually-hidden" type="checkbox" id="active" name="active" value="true" checked>
+
                     <button type="submit" class="btn btn-default btn-lg">Zarejestruj</button>
                 </div>
             </form>

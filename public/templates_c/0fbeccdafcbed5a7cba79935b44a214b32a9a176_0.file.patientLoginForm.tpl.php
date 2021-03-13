@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2021-03-08 23:16:19
+/* Smarty version 3.1.34-dev-7, created on 2021-03-12 22:56:18
   from 'C:\xampp\htdocs\medicus\app\views\login\patientLoginForm.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_6046a2336b6183_48972677',
+  'unifunc' => 'content_604be382c1cc20_34751262',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0fbeccdafcbed5a7cba79935b44a214b32a9a176' => 
     array (
       0 => 'C:\\xampp\\htdocs\\medicus\\app\\views\\login\\patientLoginForm.tpl',
-      1 => 1615241770,
+      1 => 1615584649,
       2 => 'file',
     ),
   ),
@@ -21,24 +21,24 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:common_elements/navigation/loginNav.tpl' => 1,
   ),
 ),false)) {
-function content_6046a2336b6183_48972677 (Smarty_Internal_Template $_smarty_tpl) {
+function content_604be382c1cc20_34751262 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_6192804496046a2336af7d3_04724778', "content");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1701689434604be382c0e295_43676553', "content");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "common.tpl");
 }
 /* {block "content"} */
-class Block_6192804496046a2336af7d3_04724778 extends Smarty_Internal_Block
+class Block_1701689434604be382c0e295_43676553 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_6192804496046a2336af7d3_04724778',
+    0 => 'Block_1701689434604be382c0e295_43676553',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

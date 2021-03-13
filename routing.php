@@ -39,7 +39,7 @@ Utils::addRoute('patientDashboard', 'PatientController');
 
 Utils::addRoute('displayAllAppointments', 'AppointmentController');
 Utils::addRoute('displaySelfEmployeeAppointments', 'AppointmentController');
-Utils::addRoute('displaySelfPatientAppointments', 'AppointmentController');
+Utils::addRoute('displayPatientAppointments', 'AppointmentController');
 Utils::addRoute('showAppointments', 'AppointmentController');
 Utils::addRoute('generateAddAppointmentForm', 'AppointmentController');
 Utils::addRoute('registerAppointment', 'AppointmentController');

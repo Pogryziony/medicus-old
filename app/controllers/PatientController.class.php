@@ -2,80 +2,61 @@
 
 namespace app\controllers;
 
-use app\forms\patient\PatientLoginForm;
+use app\forms\patient\PatientRegisterForm;
 use core\App;
-use core\RoleUtils;
+use core\Message;
 use core\SessionUtils;
 use core\Utils;
 use core\Validator;
 use core\ParamUtils;
 
 class PatientController {
-    private $patientLoginForm;
+    private $patientRegisterForm;
 
     public function __construct()
     {
-        $this->patientLoginForm = new PatientLoginForm();
+        $this->patientRegisterForm = new PatientRegisterForm();
     }
 
-    public function action_patientLogin()
+
+    public function validatePatientLogin(): bool
     {
-        $this->patientLogin();
-    }
+        $this->patientRegisterForm->pesel = ParamUtils::getFromRequest('pesel');
+        $this->patientRegisterForm->password = ParamUtils::getFromRequest('password');
 
-    private function patientLogin()
-    {
-        if (SessionUtils::load("patientSessionData", true) != null) {
-            App::getRouter()->redirectTo("patientDashboard");
-        }
-        $this->patientLoginForm->pesel = ParamUtils::getFromRequest('pesel');
-        $this->patientLoginForm->password = ParamUtils::getFromRequest('password');
-
-        // if request method is post and validation is okay, login user
-        if (($_SERVER["REQUEST_METHOD"] === "POST") && ($this->validatePatientLogin($this->patientLoginForm->pesel, $this->patientLoginForm->password))) {
-            $this->loginPatient($this->patientLoginForm->pesel);
-        }
-        $this->generatePatientLoginForm();
-    }
-
-    private function validatePatientLogin($pesel, $password)
-    {
-        $this->patientLoginForm->pesel = ParamUtils::getFromRequest('pesel');
-        $this->patientLoginForm->password = ParamUtils::getFromRequest('password');
-
-        if (!isset($this->patientLoginForm->pesel))
+        if (!isset($this->patientRegisterForm->pesel))
             return false;
-        if (empty($this->patientLoginForm->pesel)) {
+        if (empty($this->patientRegisterForm->pesel)){
             Utils::addErrorMessage('Nie podano peselu.');
         }
-        if (empty($this->patientLoginForm->password)) {
+        if (empty($this->patientRegisterForm->password)) {
             Utils::addErrorMessage('Nie podano hasła.');
         }
+
         if (App::getMessages()->isError())
             return false;
 
         $v = new Validator();
 
-        $this->patientLoginForm->pesel = $v->validate($this->patientLoginForm->pesel, [
+        $this->patientRegisterForm->pesel = $v->validate($this->patientRegisterForm->pesel, [
             'trim' => true,
-            'required' => true,
-            'length' => 11,
-            'validator_message' => 'Pesel musi mieć 11 znaków.',
+            'required' => true
         ]);
 
-        try {
+        try{
             $patientRow = App::getDB()->get("patient", [
                 "password",
                 "active"
             ], [
-                "pesel" => $this->patientLoginForm->pesel
+                "pesel" => $this->patientRegisterForm->pesel
             ]);
-            if (!isset($patientRow)) {
-                Utils::addErrorMessage('Nieprawidłowy login lub hasło.');
+
+            if(!isset($patientRow)){
+                Utils::addErrorMessage('Nieprawidłowy pesel lub hasło.');
                 return false;
-            } else {
-                if ($this->patientLoginForm->password != $patientRow["password"]) {
-                    Utils::addErrorMessage('Nieprawidłowy login lub hasło.');
+            }else {
+                if ($this->patientRegisterForm->password != $patientRow["password"]) {
+                    Utils::addErrorMessage('Nieprawidłowy pesel lub hasło.');
                     return false;
                 }
 
@@ -87,35 +68,40 @@ class PatientController {
         } catch (\PDOException $e) {
             Utils::addErrorMessage('Wystąpił błąd podczas logowania.');
             if (App::getConf()->debug)
-            App::getMessages()->addMessage($e->getMessage());
+                App::getMessages()->addMessage($e->getMessage());
         }
 
         return !App::getMessages()->isError();
-
     }
 
-    private function loginPatient($pesel)
-    {
-        $patientData = array();
-        try {
-            $patientData = App::getDB()->get("patient", [
-                "password",
-                "active",
-            ], [
-                "pesel" => $pesel
-            ]);
-            $patientData = $patientData[0];
-        } catch (\PDOException $e) {
-            App::getMessages()->addMessage("Wystąpił błąd podczas logowania użytkownika. Spróbuj ponownie, lub skontaktuj się z administratorem systemu");
+    public function action_showLogin() {
+        $this->generatePatientLoginView();
+    }
+
+    public function action_patientLogin() {
+        if ($this->validatePatientLogin()) {
+            //zalogowany => przekieruj na główną akcję (z przekazaniem messages przez sesję)
+            App::getMessages()->addMessage(new Message('Poprawnie zalogowano do systemu', Message::INFO));
+            $row = App::getDB()->get('patient', ['id','pesel'],[
+                "pesel" => $this->patientRegisterForm->pesel]);
+            SessionUtils::store('pat_id', $row['id']);
+            SessionUtils::store('pat_pesel', $row['pesel']);
+            App::getRouter()->redirectTo("patientDashboard");
+        } else {
+            //niezalogowany => pozostań na stronie logowania
+            $this->generatePatientLoginView();
         }
-        RoleUtils::addRole($patientData["role"]);
-        SessionUtils::store("patientId", $patientData["id"]);
-        $patientSessionData = new \stdClass();
-        $patientSessionData->name = $patientData["name"];
-        $patientSessionData->secondName = $patientData["second_name"];
-        $patientSessionData->role = $patientData["role"];
-        SessionUtils::store("patientSessionData", $patientSessionData);
-        App::getRouter()->redirectTo("patientDashboard");
+    }
+
+    public function generatePatientLoginView() {
+        App::getSmarty()->assign('form', $this->patientRegisterForm); // dane formularza do widoku
+        App::getSmarty()->display('login/patientLoginForm.tpl');
+    }
+
+
+    public function generateView() {
+        App::getSmarty()->assign('patientRegisterForm', $this->patientRegisterForm); // dane formularza do widoku
+        App::getSmarty()->display('login/patientLoginForm.tpl');
     }
 
     public function action_patientLogout()
@@ -132,7 +118,7 @@ class PatientController {
 
     public function generatePatientLoginForm()
     {
-        App::getSmarty()->assign('loginForm', $this->patientLoginForm); // dane formularza do widoku
+        App::getSmarty()->assign('loginForm', $this->patientRegisterForm); // dane formularza do widoku
         App::getSmarty()->display('login/patientLoginForm.tpl');
     }
 
