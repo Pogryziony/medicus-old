@@ -23,6 +23,8 @@
             <div class="col-md-4 widget">
                 <h3 class="widget-title">Cel ćwiczenia</h3>
                 <div class="widget-body">
+                    <p>Projekt prostego systemu zarządzania kliniką, stworzony na potrzeby przedmiotu "<a href="http://kudlacik.eu/page/prz_jpsi">Aplikacje sieciowe</a>".</p>
+                    <p>Wykonanie w <a href="http://amelia-framework.eu/" target="_blank">Amelia framework</a></p>
                     <p>Widok stworzony w oparciu o style  <a href="https://getbootstrap.com/docs/5.0/getting-started/download/" target="_blank">Bootstrap</a>.</p>
                 </div>
             </div>

@@ -93,7 +93,7 @@ class PatientController {
             $patientData->pesel = $patientRow["pesel"];
             SessionUtils::storeObject("patientData", $patientData);
             // if request method is post and validation is okay, login user
-            App::getRouter()->redirectTo('patientDashboard');
+            App::getRouter()->redirectTo('displayPatientAppointments');
         } else {
             //niezalogowany => pozostań na stronie logowania
             $this->generatePatientLoginView();
@@ -125,6 +125,6 @@ class PatientController {
 
     public function action_patientDashboard()
     {
-        App::getSmarty()->display("mainPatientPage.tpl");
+        App::getRouter()->redirectTo('displayPatientAppointments');
     }
 }

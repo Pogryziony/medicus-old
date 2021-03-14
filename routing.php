@@ -21,6 +21,10 @@ Utils::addRoute('editPatient', 'AdminController',['admin','user']);
 Utils::addRoute('savePatient', 'AdminController',['admin','user']);
 Utils::addRoute('deletePatient', 'AdminController',['admin','user']);
 
+Utils::addRoute('editAppointment', 'AdminController',['admin','user']);
+Utils::addRoute('deleteAppointment', 'AdminController',['admin','user']);
+
+
 Utils::addRoute('generateEmployeeLoginForm', 'EmployeeController');
 Utils::addRoute('employeeLogin', 'EmployeeController');
 Utils::addRoute('employeeLogout', 'EmployeeController');
@@ -40,7 +44,6 @@ Utils::addRoute('displayPatientAppointments', 'AppointmentController');
 Utils::addRoute('showAppointments', 'AppointmentController');
 Utils::addRoute('generateAddAppointmentForm', 'AppointmentController',['admin','user']);
 Utils::addRoute('registerAppointment', 'AppointmentController',['admin','user']);
-Utils::addRoute('editAppointment', 'AppointmentController',['admin','user']);
 
 
 

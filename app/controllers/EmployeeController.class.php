@@ -95,7 +95,7 @@ class EmployeeController {
             RoleUtils::addRole($employeeData->role);
             SessionUtils::storeObject("employeeData", $employeeData);
             // if request method is post and validation is okay, login user
-            App::getRouter()->redirectTo('employeeDashboard');
+            App::getRouter()->redirectTo('displayEmployeeAppointments');
         } else {
             //niezalogowany => pozostań na stronie logowania
             $this->generateEmployeeLoginForm();
@@ -122,7 +122,7 @@ class EmployeeController {
 
     public function action_employeeDashboard()
     {
-        App::getSmarty()->display('mainEmployeePage.tpl');
+        App::getRouter()->redirectTo('displayEmployeeAppointments');
     }
 
     public function action_displayPatientsTable()

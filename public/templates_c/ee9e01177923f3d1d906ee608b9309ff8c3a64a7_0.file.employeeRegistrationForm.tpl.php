@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2021-03-14 01:43:15
+/* Smarty version 3.1.34-dev-7, created on 2021-03-14 11:08:33
   from 'C:\xampp\htdocs\medicus\app\views\admin\registration\employeeRegistrationForm.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_604d5c23028282_89290875',
+  'unifunc' => 'content_604de0a1ef6198_23844401',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ee9e01177923f3d1d906ee608b9309ff8c3a64a7' => 
     array (
       0 => 'C:\\xampp\\htdocs\\medicus\\app\\views\\admin\\registration\\employeeRegistrationForm.tpl',
-      1 => 1615671523,
+      1 => 1615686302,
       2 => 'file',
     ),
   ),
@@ -21,24 +21,24 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:common_elements/navigation/employeeModuleNav.tpl' => 1,
   ),
 ),false)) {
-function content_604d5c23028282_89290875 (Smarty_Internal_Template $_smarty_tpl) {
+function content_604de0a1ef6198_23844401 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1707628669604d5c23015008_59154385', "content");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_497176986604de0a1ee3e58_32589221', "content");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "common.tpl");
 }
 /* {block "content"} */
-class Block_1707628669604d5c23015008_59154385 extends Smarty_Internal_Block
+class Block_497176986604de0a1ee3e58_32589221 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_1707628669604d5c23015008_59154385',
+    0 => 'Block_497176986604de0a1ee3e58_32589221',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -128,7 +128,10 @@ registerEmployee">
                         </div>
                         <div class="panel-body">
                             <div class="form-check">
-                                <input type="checkbox" id="active" name="active" value="true" <?php if ($_smarty_tpl->tpl_vars['form']->value->isActive === "true") {?> checked<?php }?>>
+                                <input type="checkbox" id="active" name="active" value="true" <?php ob_start();
+echo $_smarty_tpl->tpl_vars['form']->value->isActive;
+$_prefixVariable1 = ob_get_clean();
+if ($_prefixVariable1) {?>checked<?php }?>>
                                 <label for="active">Aktywny</label>
                             </div>
 
