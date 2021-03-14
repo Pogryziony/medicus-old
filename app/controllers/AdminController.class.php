@@ -75,7 +75,7 @@ class AdminController
         $this->employeeForm->name = ParamUtils::getFromRequest('name', true, 'Błędne wywołanie aplikacji');
         $this->employeeForm->secondName = ParamUtils::getFromRequest('second_name',  false, 'Błędne wywołanie aplikacji');
         $this->employeeForm->surname = ParamUtils::getFromRequest('surname', true, 'Błędne wywołanie aplikacji');
-        $this->employeeForm->profession = ParamUtils::getFromRequest('profession', true, 'Błędne wywołanie aplikacji');
+        $this->employeeForm->profession = ParamUtils::getFromRequest('profession', false, 'Błędne wywołanie aplikacji');
         $this->employeeForm->phone = ParamUtils::getFromRequest('phone', true, 'Błędne wywołanie aplikacji');
         $this->employeeForm->email = ParamUtils::getFromRequest('email', true, 'Błędne wywołanie aplikacji');
         $this->employeeForm->password = ParamUtils::getFromRequest('password', true, 'Błędne wywołanie aplikacji');
@@ -414,7 +414,7 @@ class AdminController
         $this->patientRegisterForm->city = ParamUtils::getFromRequest('city', true, 'Błędne wywołanie aplikacji');
         $this->patientRegisterForm->street = ParamUtils::getFromRequest('street', true, 'Błędne wywołanie aplikacji');
         $this->patientRegisterForm->houseNumber = ParamUtils::getFromRequest('house_number', true, 'Błędne wywołanie aplikacji');
-        $this->patientRegisterForm->flatNumber = ParamUtils::getFromRequest('flat_number', true, 'Błędne wywołanie aplikacji');
+        $this->patientRegisterForm->flatNumber = ParamUtils::getFromRequest('flat_number', false, 'Błędne wywołanie aplikacji');
         $this->patientRegisterForm->phone = ParamUtils::getFromRequest('phone', true, 'Błędne wywołanie aplikacji');
         $this->patientRegisterForm->email = ParamUtils::getFromRequest('email', true, 'Błędne wywołanie aplikacji');
         $this->patientRegisterForm->password = ParamUtils::getFromRequest('password', true, 'Błędne wywołanie aplikacji');
@@ -442,7 +442,7 @@ class AdminController
 
         $this->patientRegisterForm->secondName = $v->validate($this->patientRegisterForm->secondName, [
             'trim' => true,
-            'required' => true,
+            'required' => false,
             'min_length' => 2,
             'max_length' => 30,
             'validator_message' => 'Imie powinno mieścić się pomiędzy 2 a 30 znakami.',
@@ -489,7 +489,7 @@ class AdminController
 
         $this->patientRegisterForm->flatNumber = $v->validate($this->patientRegisterForm->flatNumber, [
             'trim' => true,
-            'required' => true,
+            'required' => false,
             'max_length' => 5,
             'validator_message' => 'Numer mieszkania powinien mieścić się w zakresie 5 znaków.',
         ]);
@@ -615,7 +615,7 @@ class AdminController
         $this->patientRegisterForm->city = ParamUtils::getFromRequest('city', true, 'Błędne miasto');
         $this->patientRegisterForm->street = ParamUtils::getFromRequest('street', true, 'Błędna ulica');
         $this->patientRegisterForm->houseNumber = ParamUtils::getFromRequest('house_number', true, 'Błędny numer domu');
-        $this->patientRegisterForm->flatNumber = ParamUtils::getFromRequest('flat_number', true, 'Błędny numer mieszkania');
+        $this->patientRegisterForm->flatNumber = ParamUtils::getFromRequest('flat_number', false, 'Błędny numer mieszkania');
         $this->patientRegisterForm->phone = ParamUtils::getFromRequest('phone', true, 'Błędny numerr telefonu');
         $this->patientRegisterForm->email = ParamUtils::getFromRequest('email', true, 'Błędny email');
         $this->patientRegisterForm->password = ParamUtils::getFromRequest('password', true, 'Błędne hasło');
@@ -644,7 +644,7 @@ class AdminController
 
         $this->patientRegisterForm->surname = $v->validate($this->patientRegisterForm->surname, [
             'trim' => true,
-            'required' => true,
+            'required' => false,
             'min_length' => 5,
             'max_length' => 30,
             'validator_message' => 'Nazwisko powinno mieścić się pomiędzy 5 a 30 znakami.',

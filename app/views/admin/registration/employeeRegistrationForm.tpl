@@ -74,7 +74,7 @@
                         </div>
                         <div class="panel-body">
                             <div class="form-check">
-                                <input type="checkbox" id="active" name="active" value="true" {if $form->isActive === "true"} checked{/if}>
+                                <input type="checkbox" id="active" name="active" value="true" {if {$form->isActive}}checked{/if}>
                                 <label for="active">Aktywny</label>
                             </div>
 

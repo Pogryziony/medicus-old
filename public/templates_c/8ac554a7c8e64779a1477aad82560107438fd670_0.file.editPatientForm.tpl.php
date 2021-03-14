@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2021-03-12 23:40:17
+/* Smarty version 3.1.34-dev-7, created on 2021-03-14 02:24:29
   from 'C:\xampp\htdocs\medicus\app\views\admin\edit\editPatientForm.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_604bedd11a6554_65035149',
+  'unifunc' => 'content_604d65cd828953_24981913',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8ac554a7c8e64779a1477aad82560107438fd670' => 
     array (
       0 => 'C:\\xampp\\htdocs\\medicus\\app\\views\\admin\\edit\\editPatientForm.tpl',
-      1 => 1615584649,
+      1 => 1615671390,
       2 => 'file',
     ),
   ),
@@ -21,24 +21,24 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:common_elements/navigation/employeeModuleNav.tpl' => 1,
   ),
 ),false)) {
-function content_604bedd11a6554_65035149 (Smarty_Internal_Template $_smarty_tpl) {
+function content_604d65cd828953_24981913 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1789348885604bedd1184ab9_76890742', "content");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1548756347604d65cd815c15_98490485', "content");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "common.tpl");
 }
 /* {block "content"} */
-class Block_1789348885604bedd1184ab9_76890742 extends Smarty_Internal_Block
+class Block_1548756347604d65cd815c15_98490485 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_1789348885604bedd1184ab9_76890742',
+    0 => 'Block_1548756347604d65cd815c15_98490485',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
