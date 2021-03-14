@@ -1,6 +1,6 @@
 {extends file="common.tpl"}
 {block name="content"}
-    {include file="common_elements/navigation/loginNav.tpl"}
+    {include file="common_elements/navigation/employeeModuleNav.tpl"}
     <div id="featured">
         <div class="container" xmlns="http://www.w3.org/1999/html">
             <h2>Formularz rejestracji pracownika</h2>

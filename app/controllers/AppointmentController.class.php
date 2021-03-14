@@ -32,14 +32,10 @@ class AppointmentController {
     {
         if ($this->validateAppointmentRegistration()) {
             try {
-                $patientExists = App::getDB()->get("patient", '*', [
-                    "pesel" => $this->patientRegisterForm->pesel
-                ]);
-
-                $employeeExists = App::getDB()->get("employee", '*', [
+               $employeeExists = App::getDB()->get("employee", '*', [
                     "pesel" => $this->employeeForm->pesel
                 ]);
-                if (!$patientExists&&!$employeeExists) {
+                if ($employeeExists) {
                     App::getDB()->insert("appointment", [
                         "pesel_patient" => $this->patientRegisterForm->pesel,
                         "pesel_employee" => $this->employeeForm->pesel,
@@ -48,7 +44,7 @@ class AppointmentController {
                         "purpose" => $this->appointmentForm->purpose,
                     ]);
                 } else {
-                    Utils::addErrorMessage('Email lub nazwa użytkownika już istnieje..');
+                    Utils::addErrorMessage('Pracownik o takim peselu nie istnieje');
                     $this->generateAddAppointmentForm();
                 }
             } catch (\PDOException $e) {

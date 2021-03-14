@@ -8,18 +8,18 @@ App::getRouter()->setLoginRoute('showPatientLoginForm'); #action to forward if n
 
 Utils::addRoute('dashboard', 'MainPageController');
 
-Utils::addRoute('generateEmployeeRegisterForm', 'AdminController');
-Utils::addRoute('registerEmployee', 'AdminController');
-Utils::addRoute('editEmployee', 'AdminController');
-Utils::addRoute('saveEmployee', 'AdminController');
-Utils::addRoute('deleteEmployee', 'AdminController');
+Utils::addRoute('generateEmployeeRegisterForm', 'AdminController',['admin']);
+Utils::addRoute('registerEmployee', 'AdminController',['admin']);
+Utils::addRoute('editEmployee', 'AdminController',['admin']);
+Utils::addRoute('saveEmployee', 'AdminController',['admin']);
+Utils::addRoute('deleteEmployee', 'AdminController',['admin']);
 
 Utils::addRoute('generatePatientSelfRegistrationView', 'AdminController');
-Utils::addRoute('generateAdminPatientRegistrationView', 'AdminController');
-Utils::addRoute('registerPatient', 'AdminController');
-Utils::addRoute('editPatient', 'AdminController');
-Utils::addRoute('savePatient', 'AdminController');
-Utils::addRoute('deletePatient', 'AdminController');
+Utils::addRoute('generateAdminPatientRegistrationView', 'AdminController',['admin','user']);
+Utils::addRoute('registerPatient', 'AdminController',['admin','user']);
+Utils::addRoute('editPatient', 'AdminController',['admin','user']);
+Utils::addRoute('savePatient', 'AdminController',['admin','user']);
+Utils::addRoute('deletePatient', 'AdminController',['admin','user']);
 
 Utils::addRoute('generateEmployeeLoginForm', 'EmployeeController');
 Utils::addRoute('employeeLogin', 'EmployeeController');
@@ -38,9 +38,9 @@ Utils::addRoute('displayAllAppointments', 'AppointmentController');
 Utils::addRoute('displayEmployeeAppointments', 'AppointmentController');
 Utils::addRoute('displayPatientAppointments', 'AppointmentController');
 Utils::addRoute('showAppointments', 'AppointmentController');
-Utils::addRoute('generateAddAppointmentForm', 'AppointmentController');
-Utils::addRoute('registerAppointment', 'AppointmentController');
-Utils::addRoute('editAppointment', 'AppointmentController');
+Utils::addRoute('generateAddAppointmentForm', 'AppointmentController',['admin','user']);
+Utils::addRoute('registerAppointment', 'AppointmentController',['admin','user']);
+Utils::addRoute('editAppointment', 'AppointmentController',['admin','user']);
 
 
 

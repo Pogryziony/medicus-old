@@ -17,17 +17,19 @@
                         <br/>
                     </div>
                     <div class="col-xl-3">
-                        <label for="date">Data</label>
-                        <input class="datepicker active" type="text" name="date" id="date" placeholder="Data" value="{$form->date|substr:0:10}" required>
-                    </div>
-                    <div class="col-xl-3">
-                        <label for="time">Godzina</label>
-                        <input class="hour_picker" type="text" name="time" id="time" placeholder="Godzina" value="{$form->time|substr:11:5}" required>
+                        <div class="panel panel-default" width="50%">
+                            <div class="panel-heading">
+                                <label for="flexRadioDefault">Data</label>
+                            </div>
+                            <div class="panel-body">
+                                <input class="datepicker active" type="text" name="date" id="date" placeholder="Dzień" value="{$form->date|substr:0:10}" required>
+                                <input class="hour_picker" type="text" name="time" id="time" placeholder="Godzina" value="{$form->time|substr:11:5}" required>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-xl-3">
                         <label for="purpose">Cel wizyty</label>
                         <input type="purpose" class="form-control" name="purpose"  value="{$form->purpose}" placeholder="Cel wizyty" required>
-                        <br/>
                     </div>
 
                     <button type="submit" class="button btn-lg">Dodaj wizytę</button>
