@@ -3,44 +3,48 @@
 use core\App;
 use core\Utils;
 
-App::getRouter()->setDefaultRoute('dashboard'); #default action
-App::getRouter()->setLoginRoute('showPatientLoginForm'); #action to forward if no permissions
+App::getRouter()->setDefaultRoute('dashboard'); #defaults action
+App::getRouter()->setLoginRoute('patientLogin'); #action to forward if no permissions
 
-Utils::addRoute('dashboard', 'MainPageController');
+Utils::addRoute('dashboard', 'defaults\HomepageController');
 
-Utils::addRoute('generateEmployeeRegisterForm', 'AdminController',['admin']);
-Utils::addRoute('registerEmployee', 'AdminController',['admin']);
-Utils::addRoute('editEmployee', 'AdminController',['admin']);
-Utils::addRoute('saveEmployee', 'AdminController',['admin']);
-Utils::addRoute('deleteEmployee', 'AdminController',['admin']);
+Utils::addRoute('patientLogin', 'login\PatientLoginController');
+Utils::addRoute('patientLogout', 'login\PatientLoginController');
 
-Utils::addRoute('generatePatientSelfRegistrationView', 'AdminController');
-Utils::addRoute('generateAdminPatientRegistrationView', 'AdminController',['admin','user']);
-Utils::addRoute('registerPatient', 'AdminController',['admin','user']);
-Utils::addRoute('editPatient', 'AdminController',['admin','user']);
-Utils::addRoute('savePatient', 'AdminController',['admin','user']);
-Utils::addRoute('deletePatient', 'AdminController',['admin','user']);
+Utils::addRoute('patientDashboard', 'patient\PatientHomepageController');
 
-Utils::addRoute('editAppointment', 'AdminController',['admin','user']);
-Utils::addRoute('deleteAppointment', 'AdminController',['admin','user']);
+Utils::addRoute('patientAppointments', 'patient\PatientAppointmentController');
+Utils::addRoute('generatePatientSelfRegistrationView', 'patient\PatientRegistrationController');
+
+Utils::addRoute('generateEmployeeRegisterForm', 'admin\AdminEmployeeController',['admin']);
+Utils::addRoute('registerEmployee', 'admin\AdminEmployeeController',['admin']);
+Utils::addRoute('editEmployee', 'admin\AdminEmployeeController',['admin']);
+Utils::addRoute('saveEmployee', 'admin\AdminEmployeeController',['admin']);
+Utils::addRoute('deleteEmployee', 'admin\AdminEmployeeController',['admin']);
+
+Utils::addRoute('generateAdminPatientRegistrationView', 'admin\AdminPatientController',['admin','user']);
+Utils::addRoute('registerPatient', 'admin\AdminPatientController',['admin','user']);
+Utils::addRoute('editPatient', 'admin\AdminPatientController',['admin','user']);
+Utils::addRoute('savePatient', 'admin\AdminPatientController',['admin','user']);
+Utils::addRoute('deletePatient', 'admin\AdminPatientController',['admin','user']);
+
+Utils::addRoute('editAppointment', 'admin\AdminAppointmentController',['admin','user']);
+Utils::addRoute('deleteAppointment', 'admin\AdminAppointmentController',['admin','user']);
 
 
-Utils::addRoute('generateEmployeeLoginForm', 'EmployeeController');
-Utils::addRoute('employeeLogin', 'EmployeeController');
-Utils::addRoute('employeeLogout', 'EmployeeController');
-Utils::addRoute('employeeDashboard', 'EmployeeController');
-Utils::addRoute('displayEmployeeTable', 'EmployeeController');
-Utils::addRoute('displayPatientsTable', 'EmployeeController');
+//Utils::addRoute('generateEmployeeLoginForm', 'EmployeeLoginController');
+Utils::addRoute('employeeLogin', 'login\EmployeeLoginController');
+Utils::addRoute('employeeLogout', 'login\EmployeeLoginController');
+Utils::addRoute('employeeDashboard', 'employee\EmployeeHomepageController');
+Utils::addRoute('displayEmployeeTable', 'admin\AdminEmployeeController');
+Utils::addRoute('displayPatientsTable', 'admin\AdminPatientController');
 
-Utils::addRoute('showPatientLoginForm', 'PatientController');
-Utils::addRoute('patientLogin', 'PatientController');
-Utils::addRoute('patientLogout', 'PatientController');
-Utils::addRoute('patientDashboard', 'PatientController');
-Utils::addRoute('patientDashboard', 'PatientController');
+Utils::addRoute('showPatientLoginForm', 'patient\PatientLoginController');
+Utils::addRoute('patientDashboard', 'patient\PatientHomepageController');
 
-Utils::addRoute('displayAllAppointments', 'AppointmentController');
-Utils::addRoute('displayEmployeeAppointments', 'AppointmentController');
-Utils::addRoute('displayPatientAppointments', 'AppointmentController');
+Utils::addRoute('displayAllAppointments', 'admin\AdminAppointmentController');
+Utils::addRoute('displayEmployeeAppointments', 'employee\EmployeeAppointmentController');
+Utils::addRoute('displayPatientAppointments', 'patient\PatientAppointmentController');
 Utils::addRoute('showAppointments', 'AppointmentController');
 Utils::addRoute('generateAddAppointmentForm', 'AppointmentController',['admin','user']);
 Utils::addRoute('registerAppointment', 'AppointmentController',['admin','user']);

@@ -548,7 +548,7 @@
    * @param {Element} element - The event target.
    * @param {string} type - The event type(s).
    * @param {Object} data - The additional event data.
-   * @returns {boolean} Indicate if the event is default prevented or not.
+   * @returns {boolean} Indicate if the event is defaults prevented or not.
    */
 
   function dispatchEvent(element, type, data) {
@@ -1663,8 +1663,8 @@
         return Picker;
       }
       /**
-       * Change the default options.
-       * @param {Object} options - The new default options.
+       * Change the defaults options.
+       * @param {Object} options - The new defaults options.
        */
 
     }, {
