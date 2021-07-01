@@ -64,7 +64,7 @@ class Smarty_Internal_Compile_Private_Print_Expression extends Smarty_Internal_C
         } else {
             // display value
             if (!$_attr[ 'nofilter' ]) {
-                // default modifier
+                // defaults modifier
                 if (!empty($compiler->smarty->default_modifiers)) {
                     if (empty($compiler->default_modifier_list)) {
                         $modifierlist = array();

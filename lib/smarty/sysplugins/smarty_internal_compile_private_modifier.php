@@ -116,7 +116,7 @@ class Smarty_Internal_Compile_Private_Modifier extends Smarty_Internal_CompileBa
                         }
                         break;
                     case 6:
-                        // default plugin handler
+                        // defaults plugin handler
                         if (isset($compiler->default_handler_plugins[ Smarty::PLUGIN_MODIFIER ][ $modifier ])
                             || (is_callable($compiler->smarty->default_plugin_handler_func)
                                 && $compiler->getPluginFromDefaultHandler($modifier, Smarty::PLUGIN_MODIFIER))

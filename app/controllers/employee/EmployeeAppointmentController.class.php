@@ -10,6 +10,7 @@ use core\ParamUtils;
 use core\SessionUtils;
 use core\Utils;
 use core\Validator;
+use PDOException;
 
 class EmployeeAppointmentController
 {
@@ -159,5 +160,45 @@ class EmployeeAppointmentController
         $this->generateAddAppointmentForm();
     }
 
+    public function action_getEntriesAjaxPage() {
+        $size = ParamUtils::getFromGet("size");
+        $page = ParamUtils::getFromGet("page");
+        $this->renderAjaxEntriesPage($size, $page);
+    }
+
+    public function renderAjaxEntriesPage($size, $page) {
+        App::getSmarty()->assign("appointment", $this->getFilteredEntries($size, $page));
+        App::getSmarty()->display("common_elements/tables/appointmentTable.tpl");
+    }
+
+    public function getFilteredEntries($filter, $size=10, $page=1) {
+        $where = [
+            "pesel_employee"=>SessionUtils::load("pesel_employee", true),
+            "ORDER"=>[
+                "pesel_patient"
+            ]
+        ];
+        $sizeFrom = 0;
+        $sizeTo = $size;
+        if ($page > 1) {
+            $sizeFrom = ($page - 1) * $size;
+            $sizeTo = $page * $size;
+        }
+
+        $count = App::getDB()->count("appointment", "*", $where);
+        $where["LIMIT"] = [$sizeFrom, $sizeTo];
+        $pages = ceil($count / $size);
+
+        if (($filter == "true") || ($count < $sizeFrom)) {
+            $sizeFrom = 0;
+            $sizeTo = $size;
+            $where["LIMIT"] = [$sizeFrom, $sizeTo];
+            $page = 1;
+        }
+
+        App::getSmarty()->assign("page", $page);
+        App::getSmarty()->assign("pages", $pages);
+        return App::getDB()->select("appointment", "*", $where);
+    }
 
 }

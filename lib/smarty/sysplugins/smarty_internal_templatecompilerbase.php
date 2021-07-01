@@ -155,7 +155,7 @@ abstract class Smarty_Internal_TemplateCompilerBase
     public $trace_stack = array();
 
     /**
-     * plugins loaded by default plugin handler
+     * plugins loaded by defaults plugin handler
      *
      * @var array
      */
@@ -864,7 +864,7 @@ abstract class Smarty_Internal_TemplateCompilerBase
     }
 
     /**
-     * Check for plugins by default plugin handler
+     * Check for plugins by defaults plugin handler
      *
      * @param string $tag         name of tag
      * @param string $plugin_type type of plugin
@@ -1643,7 +1643,7 @@ abstract class Smarty_Internal_TemplateCompilerBase
                         }
                     }
                     if (!$found) {
-                        // call default handler
+                        // call defaults handler
                         foreach ($this->plugin_search_order as $plugin_type) {
                             if ($this->getPluginFromDefaultHandler($tag, $plugin_type)) {
                                 $found = true;

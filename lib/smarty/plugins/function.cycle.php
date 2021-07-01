@@ -17,9 +17,9 @@
  * - values    - comma separated list of values to cycle, or an array of values to cycle
  *               (this can be left out for subsequent calls)
  * - reset     - boolean - resets given var to true
- * - print     - boolean - print var or not. default is true
+ * - print     - boolean - print var or not. defaults is true
  * - advance   - boolean - whether or not to advance the cycle
- * - delimiter - the value delimiter, default is ","
+ * - delimiter - the value delimiter, defaults is ","
  * - assign    - boolean, assigns to template var instead of printed.
  *
  * Examples:
@@ -44,7 +44,7 @@
 function smarty_function_cycle($params, $template)
 {
     static $cycle_vars;
-    $name = (empty($params[ 'name' ])) ? 'default' : $params[ 'name' ];
+    $name = (empty($params[ 'name' ])) ? 'defaults' : $params[ 'name' ];
     $print = (isset($params[ 'print' ])) ? (bool)$params[ 'print' ] : true;
     $advance = (isset($params[ 'advance' ])) ? (bool)$params[ 'advance' ] : true;
     $reset = (isset($params[ 'reset' ])) ? (bool)$params[ 'reset' ] : false;

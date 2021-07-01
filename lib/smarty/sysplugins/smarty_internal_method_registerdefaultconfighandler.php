@@ -19,7 +19,7 @@ class Smarty_Internal_Method_RegisterDefaultConfigHandler
     public $objMap = 3;
 
     /**
-     * Register config default handler
+     * Register config defaults handler
      *
      * @api Smarty::registerDefaultConfigHandler()
      *

@@ -118,7 +118,7 @@ abstract class Smarty_Resource
      * @note "C:/foo.tpl" was forced to file resource up till Smarty 3.1.3 (including).
      *
      * @param string $resource_name    template_resource or config_resource to parse
-     * @param string $default_resource the default resource_type defined in $smarty
+     * @param string $default_resource the defaults resource_type defined in $smarty
      *
      * @return array with parsed resource name and type
      */
@@ -128,7 +128,7 @@ abstract class Smarty_Resource
             $type = $match[ 1 ];
             $name = substr($resource_name, strlen($match[ 0 ]));
         } else {
-            // no resource given, use default
+            // no resource given, use defaults
             // or single character before the colon is not a resource type, but part of the filepath
             $type = $default_resource;
             $name = $resource_name;

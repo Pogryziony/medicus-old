@@ -19,13 +19,13 @@ class Smarty_Internal_Method_GetDefaultModifiers
     public $objMap = 3;
 
     /**
-     * Get default modifiers
+     * Get defaults modifiers
      *
      * @api Smarty::getDefaultModifiers()
      *
      * @param \Smarty_Internal_TemplateBase|\Smarty_Internal_Template|\Smarty $obj
      *
-     * @return array list of default modifiers
+     * @return array list of defaults modifiers
      */
     public function getDefaultModifiers(Smarty_Internal_TemplateBase $obj)
     {

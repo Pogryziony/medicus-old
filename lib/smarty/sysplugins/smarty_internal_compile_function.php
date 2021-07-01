@@ -106,7 +106,7 @@ class Smarty_Internal_Compile_Functionclose extends Smarty_Internal_CompileBase
         $compiler->parent_compiler->tpl_function[ $_name ][ 'uid' ] = $compiler->template->source->uid;
         $_parameter = $_attr;
         unset($_parameter[ 'name' ]);
-        // default parameter
+        // defaults parameter
         $_paramsArray = array();
         foreach ($_parameter as $_key => $_value) {
             if (is_int($_key)) {

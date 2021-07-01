@@ -6,12 +6,12 @@
  * @subpackage PluginsModifierCompiler
  */
 /**
- * Smarty default modifier plugin
+ * Smarty defaults modifier plugin
  * Type:     modifier
- * Name:     default
- * Purpose:  designate default value for empty variables
+ * Name:     defaults
+ * Purpose:  designate defaults value for empty variables
  *
- * @link   http://www.smarty.net/manual/en/language.modifier.default.php default (Smarty online manual)
+ * @link   http://www.smarty.net/manual/en/language.modifier.default.php defaults (Smarty online manual)
  * @author Uwe Tews
  *
  * @param array $params parameters

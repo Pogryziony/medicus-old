@@ -31,8 +31,12 @@ Utils::addRoute('deletePatient', 'admin\AdminPatientController',['admin','user']
 Utils::addRoute('editAppointment', 'admin\AdminAppointmentController',['admin','user']);
 Utils::addRoute('deleteAppointment', 'admin\AdminAppointmentController',['admin','user']);
 
+// AJAX endpoints
+Utils::addRoute('getEntriesAjax', 'employee\EmployeeAppointmentController');
+Utils::addRoute('getEntriesAjaxPage', 'employee\EmployeeAppointmentController');
 
-//Utils::addRoute('generateEmployeeLoginForm', 'EmployeeLoginController');
+
+Utils::addRoute('generateEmployeeLoginForm', 'login\EmployeeLoginController');
 Utils::addRoute('employeeLogin', 'login\EmployeeLoginController');
 Utils::addRoute('employeeLogout', 'login\EmployeeLoginController');
 Utils::addRoute('employeeDashboard', 'employee\EmployeeHomepageController');
@@ -45,9 +49,9 @@ Utils::addRoute('patientDashboard', 'patient\PatientHomepageController');
 Utils::addRoute('displayAllAppointments', 'admin\AdminAppointmentController');
 Utils::addRoute('displayEmployeeAppointments', 'employee\EmployeeAppointmentController');
 Utils::addRoute('displayPatientAppointments', 'patient\PatientAppointmentController');
-Utils::addRoute('showAppointments', 'AppointmentController');
-Utils::addRoute('generateAddAppointmentForm', 'AppointmentController',['admin','user']);
-Utils::addRoute('registerAppointment', 'AppointmentController',['admin','user']);
+Utils::addRoute('showAppointments', 'employee\EmployeeAppointmentController');
+Utils::addRoute('generateAddAppointmentForm', 'employee\EmployeeAppointmentController',['admin','user']);
+Utils::addRoute('registerAppointment', 'employee\EmployeeAppointmentController',['admin','user']);
 
 
 

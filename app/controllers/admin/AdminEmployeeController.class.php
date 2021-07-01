@@ -264,7 +264,7 @@ class AdminEmployeeController
                     Utils::addErrorMessage($e->getMessage());
                 }
             }
-            Utils::addInfoMessage('Zapisano zmiany w rachunku.');
+            Utils::addInfoMessage('Zapisano zmiany.');
             App::getRouter()->forwardTo('displayEmployeeTable');
         } else {
             $this->generateEmployeeEditForm();

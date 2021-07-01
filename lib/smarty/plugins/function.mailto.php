@@ -14,9 +14,9 @@
  * Params:
  *
  * - address    - (required) - e-mail address
- * - text       - (optional) - text to display, default is address
+ * - text       - (optional) - text to display, defaults is address
  * - encode     - (optional) - can be one of:
- *                             * none : no encoding (default)
+ *                             * none : no encoding (defaults)
  *                             * javascript : encode with javascript
  *                             * javascript_charcode : encode with javascript charcode
  *                             * hex : encode with hexadecimal (no javascript)

@@ -70,7 +70,7 @@ function smarty_function_html_select_date($params, Smarty_Internal_Template $tem
     $display_months = true;
     $display_years = true;
     $month_format = '%B';
-    /* Write months as numbers by default  GL */
+    /* Write months as numbers by defaults  GL */
     $month_value_format = '%m';
     $day_format = '%02d';
     /* Write day values using this format MB */
@@ -83,7 +83,7 @@ function smarty_function_html_select_date($params, Smarty_Internal_Template $tem
        "birthday[Month]" & "birthday[Year]". Can be combined with prefix */
     $field_array = null;
     /* <select size>'s of the different <select> tags.
-       If not set, uses default dropdown. */
+       If not set, uses defaults dropdown. */
     $day_size = null;
     $month_size = null;
     $year_size = null;

@@ -19,7 +19,7 @@ class Smarty_Internal_Method_RegisterDefaultTemplateHandler
     public $objMap = 3;
 
     /**
-     * Register template default handler
+     * Register template defaults handler
      *
      * @api Smarty::registerDefaultTemplateHandler()
      *
@@ -41,7 +41,7 @@ class Smarty_Internal_Method_RegisterDefaultTemplateHandler
     }
 
     /**
-     * get default content from template or config resource handler
+     * get defaults content from template or config resource handler
      *
      * @param Smarty_Template_Source $source
      *
@@ -67,7 +67,7 @@ class Smarty_Internal_Method_RegisterDefaultTemplateHandler
                 throw new SmartyException(
                     'Default handler: Unable to load ' .
                     ($source->isConfig ? 'config' : 'template') .
-                    " default file '{$_return}' for '{$source->type}:{$source->name}'"
+                    " defaults file '{$_return}' for '{$source->type}:{$source->name}'"
                 );
             }
             $source->name = $source->filepath = $_return;
@@ -81,7 +81,7 @@ class Smarty_Internal_Method_RegisterDefaultTemplateHandler
             $source->exists = false;
             throw new SmartyException(
                 'Default handler: No ' . ($source->isConfig ? 'config' : 'template') .
-                " default content for '{$source->type}:{$source->name}'"
+                " defaults content for '{$source->type}:{$source->name}'"
             );
         }
     }

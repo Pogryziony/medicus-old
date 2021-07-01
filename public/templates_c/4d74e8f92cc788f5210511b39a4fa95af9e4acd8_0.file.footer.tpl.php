@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2021-05-23 16:24:09
+/* Smarty version 3.1.34-dev-7, created on 2021-07-01 13:24:26
   from 'C:\xampp\htdocs\medicus\app\views\common_elements\footer.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_60aa65890482c0_32421599',
+  'unifunc' => 'content_60dda5ea891d72_30407900',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4d74e8f92cc788f5210511b39a4fa95af9e4acd8' => 
     array (
       0 => 'C:\\xampp\\htdocs\\medicus\\app\\views\\common_elements\\footer.tpl',
-      1 => 1621779845,
+      1 => 1625138663,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_60aa65890482c0_32421599 (Smarty_Internal_Template $_smarty_tpl) {
+function content_60dda5ea891d72_30407900 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div id="footer">
     <div class="container">
         <div class="row">
@@ -57,6 +57,10 @@ function content_60aa65890482c0_32421599 (Smarty_Internal_Template $_smarty_tpl)
 </div>
     <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['conf']->value->assets_url;?>
+js/ajax.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['conf']->value->assets_url;?>
 js/jquery.min.js"><?php echo '</script'; ?>
 >
     <?php echo '<script'; ?>
@@ -74,10 +78,6 @@ js/util.js"><?php echo '</script'; ?>
     <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['conf']->value->assets_url;?>
 js/main.js"><?php echo '</script'; ?>
->
-    <?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['conf']->value->assets_url;?>
-js/ajax.js"><?php echo '</script'; ?>
 >
     </body>
     </html>

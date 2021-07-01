@@ -16,10 +16,10 @@
  * Params:
  *
  * - file        - (required) - file (and path) of image
- * - height      - (optional) - image height (default actual height)
- * - width       - (optional) - image width (default actual width)
- * - basedir     - (optional) - base directory for absolute paths, default is environment variable DOCUMENT_ROOT
- * - path_prefix - prefix for path output (optional, default empty)
+ * - height      - (optional) - image height (defaults actual height)
+ * - width       - (optional) - image width (defaults actual width)
+ * - basedir     - (optional) - base directory for absolute paths, defaults is environment variable DOCUMENT_ROOT
+ * - path_prefix - prefix for path output (optional, defaults empty)
  *
  * @link    http://www.smarty.net/manual/en/language.function.html.image.php {html_image}
  *          (Smarty online manual)

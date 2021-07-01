@@ -9,25 +9,25 @@
                     <input type="id" class="form-control visually-hidden" name="id" placeholder="id" value="{if $action === "editAppointment"}{$form->id}{/if}" required>
                     <div class="col-xl-3 ">
                         <label for="pesel">Pesel pacjenta</label>
-                        <input type="text" class="form-control" name="pesel" placeholder="Pesel" value="{$form->patientPesel}" required>
+                        <input type="text" class="form-control" name="pesel" placeholder="Pesel" value="{if $action === "editAppointment"}{$form->patientPesel}{/if}" required>
                         <br/>
                     </div>
                     <div class="col-xl-3 ">
                         <label for="pesel">Pesel pracownika</label>
-                        <input type="text" class="form-control" name="pesel" placeholder="Pesel" value="{$form->employeePesel}" required>
+                        <input type="text" class="form-control" name="pesel" placeholder="Pesel" value="{if $action === "editAppointment"}{$form->employeePesel}{/if}" required>
                         <br/>
                     </div>
                     <div class="col-xl-3">
                         <label for="date">Data</label>
-                        <input class="datepicker active" type="text" name="date" id="date" placeholder="Data" value="{$form->date}" required>
+                        <input class="datepicker active" type="text" name="date" id="date" placeholder="Data" value="{if $action === "editAppointment"}{$form->date}{/if}" required>
                     </div>
                     <div class="col-xl-3">
                         <label for="time">Godzina</label>
-                        <input class="hour_picker" type="text" name="time" id="time" placeholder="Godzina" value="{$form->time}" required>
+                        <input class="hour_picker" type="text" name="time" id="time" placeholder="Godzina" value="{if $action === "editAppointment"}{$form->time}{/if}" required>
                     </div>
                     <div class="col-xl-3">
                         <label for="purpose">Cel wizyty</label>
-                        <input type="purpose" class="form-control" name="purpose"  value="{$form->purpose}" placeholder="Cel wizyty" required>
+                        <input type="purpose" class="form-control" name="purpose"  value="{if $action === "editAppointment"}{$form->purpose}{/if}" placeholder="Cel wizyty" required>
                         <br/>
                     </div>
 

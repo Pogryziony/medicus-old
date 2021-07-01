@@ -248,21 +248,21 @@ class Smarty extends Smarty_Internal_TemplateBase
     public $_joined_config_dir = null;
 
     /**
-     * default template handler
+     * defaults template handler
      *
      * @var callable
      */
     public $default_template_handler_func = null;
 
     /**
-     * default config handler
+     * defaults config handler
      *
      * @var callable
      */
     public $default_config_handler_func = null;
 
     /**
-     * default plugin handler
+     * defaults plugin handler
      *
      * @var callable
      */
@@ -548,7 +548,7 @@ class Smarty extends Smarty_Internal_TemplateBase
     public $autoload_filters = array();
 
     /**
-     * default modifier
+     * defaults modifier
      *
      * @var array
      */

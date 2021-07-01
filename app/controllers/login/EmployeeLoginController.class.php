@@ -129,8 +129,13 @@ class EmployeeLoginController
     public function action_employeeLogout()
     {
         session_destroy();
-        Utils::addInfoMessage('Zostałeś wylogowany.');
+        $this->alert('Zostałeś wylogowany');
         App::getRouter()->redirectTo('generateEmployeeLoginForm');
+    }
+
+    public function alert($msg)
+    {
+        echo '<script type="text/javascript">alert("' . $msg . '")</script>';
     }
 
     public function action_generateEmployeeLoginForm()
@@ -138,10 +143,7 @@ class EmployeeLoginController
         $this->generateEmployeeLoginForm();
     }
 
-    public function action_employeeDashboard()
-    {
-        App::getRouter()->redirectTo('displayEmployeeAppointments');
-    }
+
 
 
 

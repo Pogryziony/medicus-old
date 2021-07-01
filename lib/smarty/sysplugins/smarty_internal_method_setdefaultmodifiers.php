@@ -19,7 +19,7 @@ class Smarty_Internal_Method_SetDefaultModifiers
     public $objMap = 3;
 
     /**
-     * Set default modifiers
+     * Set defaults modifiers
      *
      * @api Smarty::setDefaultModifiers()
      *

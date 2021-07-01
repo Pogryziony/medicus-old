@@ -550,7 +550,7 @@ class Smarty_Internal_TestInstall
                 'modifiercompiler.count_paragraphs.php' => true,
                 'modifiercompiler.count_sentences.php'  => true,
                 'modifiercompiler.count_words.php'      => true,
-                'modifiercompiler.default.php'          => true,
+                'modifiercompiler.defaults.php'          => true,
                 'modifiercompiler.escape.php'           => true,
                 'modifiercompiler.from_charset.php'     => true,
                 'modifiercompiler.indent.php'           => true,

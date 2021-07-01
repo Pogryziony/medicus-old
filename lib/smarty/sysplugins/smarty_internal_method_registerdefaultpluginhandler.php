@@ -19,7 +19,7 @@ class Smarty_Internal_Method_RegisterDefaultPluginHandler
     public $objMap = 3;
 
     /**
-     * Registers a default plugin handler
+     * Registers a defaults plugin handler
      *
      * @api  Smarty::registerDefaultPluginHandler()
      * @link http://www.smarty.net/docs/en/api.register.default.plugin.handler.tpl

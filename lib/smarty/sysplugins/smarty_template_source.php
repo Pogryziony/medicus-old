@@ -95,7 +95,7 @@ class Smarty_Template_Source
     public $isConfig = false;
 
     /**
-     * Template source content eventually set by default handler
+     * Template source content eventually set by defaults handler
      *
      * @var string
      */
@@ -172,7 +172,7 @@ class Smarty_Template_Source
             $type = $match[ 1 ];
             $name = $match[ 2 ];
         } else {
-            // no resource given, use default
+            // no resource given, use defaults
             // or single character before the colon is not a resource type, but part of the filepath
             $type = $smarty->default_resource_type;
             $name = $template_resource;

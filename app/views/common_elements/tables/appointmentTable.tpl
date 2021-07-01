@@ -12,7 +12,7 @@
                         <input class="col-2 inline" type="text" name="place" id="place" placeholder="Data wizyty">
                         <input class="col-2 inline" type="text" name="hours" id="hours" placeholder="Godzina wizyty">
 
-                        <button class="button" id="entry_search_button">Filtruj</button>
+                        <button class="button" id="appointment_search_button">Filtruj</button>
                     </ul>
                 </li>
         </nav>
@@ -22,8 +22,9 @@
                 <h4>Lista wizyt</h4>
             </div>
 
-            <div class="panel-body">
+            <div id="appointment_table" class="panel-body">
                 <table class="table table-hover" align="center">
+                    {block name="table"}
                     <thead>
                     <tr>
                         <th>Pesel pacjenta</th>
@@ -60,6 +61,7 @@
 
                         </tr>
                     {/foreach}
+                    {/block}
                 </table>
             </div>
 

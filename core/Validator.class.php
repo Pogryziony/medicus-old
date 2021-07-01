@@ -220,7 +220,7 @@ class Validator {
     /**
      *  Validate and process $value according to the secified $config:
      *  [ 
-     *    'escape' => true | false | 'script', // true is default without specifying
+     *    'escape' => true | false | 'script', // true is defaults without specifying
      *    'trim' => true | int,
      *    'required' => true,
      *    'required_message' => 'message...',

@@ -13,13 +13,13 @@
  *           the passed parameters
  * Params:
  *
- * - name       (optional) - string default "select"
+ * - name       (optional) - string defaults "select"
  * - values     (required) - if no options supplied) - array
  * - options    (required) - if no values supplied) - associative array
- * - selected   (optional) - string default not set
+ * - selected   (optional) - string defaults not set
  * - output     (required) - if not options supplied) - array
- * - id         (optional) - string default not set
- * - class      (optional) - string default not set
+ * - id         (optional) - string defaults not set
+ * - class      (optional) - string defaults not set
  *
  * @link   http://www.smarty.net/manual/en/language.function.html.options.php {html_image}
  *           (Smarty online manual)

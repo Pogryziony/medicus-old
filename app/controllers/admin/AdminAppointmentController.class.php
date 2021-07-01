@@ -35,6 +35,7 @@ class AdminAppointmentController
         }
     }
 
+
     public function validateAppointmentEdit()
     {
         $this->appointmentForm->id = ParamUtils::getFromCleanURL(1, true, 'Błędne wywołanie aplikacji');
@@ -46,8 +47,8 @@ class AdminAppointmentController
                     "id" => $this->appointmentForm->id
                 ]
             );
-            $this->appointmentForm->employeePesel = $record['pesel_employee'];
             $this->appointmentForm->patientPesel = $record['pesel_patient'];
+            $this->appointmentForm->employeePesel = $record['pesel_employee'];
             $this->appointmentForm->date = $record['date'];
             $this->appointmentForm->time = $record['time'];
             $this->appointmentForm->purpose = $record['purpose'];

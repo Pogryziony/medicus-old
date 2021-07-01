@@ -1,4 +1,4 @@
-const entryBtn = document.getElementById("entry_search_button")
+const entryBtn = document.getElementById("appointment_search_button")
 
 entryBtn.addEventListener("click", async () => {
     await getDataAndRender("true")
@@ -35,34 +35,25 @@ sizeSelect.addEventListener("change", async function() {
 })
 
 async function getDataAndRender(filter) {
-    let place = document.querySelector("#place").value
-    let hours = document.querySelector("#hours").value
-    let wasDriver = document.querySelector("#was_driver").value
-    let subAllowance = document.querySelector("#sub_allowance").value
-    let dayOff = document.querySelector("#day_off").value
     let sizeVal = (sizeSelect.value)
-    await renderPage(place, hours, wasDriver, subAllowance, dayOff, currentPage, sizeVal, filter)
+    await renderPage(currentPage, sizeVal, filter)
 }
 
-async function renderPage(place="", hours="", wasDriver="", subAllowance="", dayOff="", page=1, size=10, filter) {
+async function renderPage(page=1, size=10, filter) {
     let num = location.href.indexOf("/public")
     num += 8
-    let url = location.href.slice(0, num) + `index.php?action=getEntriesAjaxPage&page=${page}&size=${size}`
-    if (filter === "true") {
-        url += `&filter=${filter}`
-        currentPage = 1
-    }
+    let url = location.href.slice(0, num) + `/displayAllAppointments?action=getEntriesAjaxPage&page=${page}&size=${size}`
     const res = await fetch(url, {
         method: "POST",
-        body: `place=${place}&hours=${hours}&driver=${wasDriver}&subsistence_allowance=${subAllowance}&day_off=${dayOff}`,
+        body: ``,
         headers: {
             "Content-Type": "application/x-www-form-urlencoded"
         }
     })
     actualSize = size
-    const content = await res.text();
-    document.querySelector("#entries_table").innerHTML = content;
-    let pagesCount = content.split(`<span id="pages_count">`)[1].split(`</span>`)[0]
+    const table = await res.text();
+    document.getElementById("appointment_table").innerHTML = table;
+    let pagesCount = table.split(`<span id="pages_count">`)[1].split(`</span>`)[0]
     renderButtons(pagesCount)
     styleButtons(pagesCount)
     pages = document.querySelectorAll(".page")
@@ -81,7 +72,7 @@ function styleButtons(pagesCount) {
     } else {
         prevBtn.classList.add("disabled")
     }
-    if (currentPage == pagesCount) {
+    if (currentPage === pagesCount) {
         nextBtn.classList.add("disabled")
     } else {
         nextBtn.classList.remove("disabled")
@@ -89,7 +80,7 @@ function styleButtons(pagesCount) {
 
     pages.forEach(e => {
         e.classList.remove("active")
-        if(currentPage == e.textContent) {
+        if(currentPage === e.textContent) {
             e.classList.add("active")
         }
     })
